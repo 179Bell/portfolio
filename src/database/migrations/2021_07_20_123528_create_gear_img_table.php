@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUsersTable extends Migration
+class CreateGearImgTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('gear_img', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
-            $table->string('email');
-            $table->string('password');
-            $table->string('bike');
+            $table->bigInteger('gear_id')->unsigned();
             $table->string('img_path');
-            $table->unique(['email','deleted_at']);
-            $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
+            $table->foreign('gear_id')->references('id')->on('gear');
         });
     }
 
@@ -34,6 +29,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('gear_img');
     }
 }
