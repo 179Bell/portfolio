@@ -16,7 +16,7 @@ class CreateCampsImgTable extends Migration
         Schema::create('camp_img', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('camp_id')->unsigned();
-            $table->string('img_path');
+            $table->string('img_path')->nullable();
             $table->timestamps();
             $table->foreign('camp_id')->references('id')->on('camps');
         });

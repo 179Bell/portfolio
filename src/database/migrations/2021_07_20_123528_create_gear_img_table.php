@@ -16,7 +16,7 @@ class CreateGearImgTable extends Migration
         Schema::create('gear_img', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('gear_id')->unsigned();
-            $table->string('img_path');
+            $table->string('img_path')->nullable();
             $table->timestamps();
             $table->foreign('gear_id')->references('id')->on('gear');
         });
