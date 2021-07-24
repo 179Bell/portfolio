@@ -20,4 +20,5 @@
 
     @yield('content')
 
+    @include('commons.footer')
 </body>
