@@ -4,7 +4,7 @@
         @if(Auth::check())
 
             <li class="nav-item">
-                <a class="nav-link">マイページ</a>
+                <a class="nav-link" href="{{ route('users.show', Auth::user()) }}">マイページ</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"

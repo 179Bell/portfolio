@@ -17,4 +17,5 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::resource('users', 'UsersController', ['only' => ['show']]);
 Route::resource('camps', 'CampsController', ['only' => ['index']]);
