@@ -13,12 +13,12 @@ class CreateGearImgTable extends Migration
      */
     public function up()
     {
-        Schema::create('gear_img', function (Blueprint $table) {
+        Schema::create('gear_imgs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('gear_id')->unsigned();
             $table->string('img_path')->nullable();
             $table->timestamps();
-            $table->foreign('gear_id')->references('id')->on('gear');
+            $table->foreign('gear_id')->references('id')->on('gears');
         });
     }
 

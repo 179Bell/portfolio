@@ -13,7 +13,7 @@ class CreateBookmarkTable extends Migration
      */
     public function up()
     {
-        Schema::create('bookmark', function (Blueprint $table) {
+        Schema::create('bookmarks', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('camp_id')->unsigned();

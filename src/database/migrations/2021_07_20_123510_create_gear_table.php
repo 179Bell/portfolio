@@ -13,7 +13,7 @@ class CreateGearTable extends Migration
      */
     public function up()
     {
-        Schema::create('gear', function (Blueprint $table) {
+        Schema::create('gears', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('comment');
@@ -21,7 +21,7 @@ class CreateGearTable extends Migration
             $table->bigInteger('maker_id')->unsigned();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('maker_id')->references('id')->on('maker');
+            $table->foreign('maker_id')->references('id')->on('makers');
         });
     }
 
