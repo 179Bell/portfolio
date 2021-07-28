@@ -13,7 +13,7 @@ class CreateMakerTable extends Migration
      */
     public function up()
     {
-        Schema::create('maker', function (Blueprint $table) {
+        Schema::create('makers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->timestamps();

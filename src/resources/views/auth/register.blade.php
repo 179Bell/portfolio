@@ -25,7 +25,16 @@
                                     名前<span class="text-danger">(※)</span>
                                 </label>
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus placeholder="名無し名人">
+                                    <input 
+                                        id="name" 
+                                        type="text" 
+                                        class="form-control @error('name') is-invalid @enderror" 
+                                        name="name" 
+                                        value="{{ old('name') }}" 
+                                        autocomplete="name"
+                                        placeholder="名無し名人"
+                                        autofocus
+                                    >
                                     <small class="text-dark">15字以内で入力してください。</small>
                                     @error('name')
                                     <span class="invalid-feedback" role="alert">
@@ -40,7 +49,15 @@
                                     メールアドレス<span class="text-danger">(※)</span>
                                 </label>
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="****@mail.com">
+                                    <input 
+                                        id="email" 
+                                        type="email" 
+                                        class="form-control @error('email') is-invalid @enderror" 
+                                        name="email" 
+                                        value="{{ old('email') }}" 
+                                        autocomplete="email" 
+                                        placeholder="****@mail.com"
+                                    >
                                     <small class="text-dark">今回は仮のメールアドレスを入力ください。</small>
                                     @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -53,7 +70,13 @@
                             <div class="form-group row">
                                 <label for="avatar" class="col-md-4 col-form-label text-md-right">プロフィール画像</label>
                                 <div class="col-md-6">
-                                    <input id="avatar" type="file" name="avatar" class="@error('avatar') is-invalid @enderror">
+                                    <input 
+                                        id="avatar" 
+                                        type="file" 
+                                        name="avatar" 
+                                        class="@error('avatar') is-invalid @enderror"
+                                        accept="image/jpeg, image/png"
+                                    >
                                     @error('avatar')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -68,7 +91,15 @@
                                     愛車<span class="text-danger">(※)</span>
                                 </label>
                                 <div class="col-md-6">
-                                    <input id="bike" type="text" class="form-control @error('bike') is-invalid @enderror" name="bike" value="{{ old('bike') }}" autocomplete="" autofocus placeholder="ホンダ CB400SF">
+                                    <input 
+                                        id="bike" 
+                                        type="text" 
+                                        class="form-control @error('bike') is-invalid @enderror" 
+                                        name="bike" 
+                                        value="{{ old('bike') }}" 
+                                        autocomplete=""
+                                        placeholder="ホンダ CB400SF"
+                                    >
                                     <small class="text-dark">愛車の車種を入力してください</small>
                                     @error('bike')
                                     <span class="invalid-feedback" role="alert">
@@ -83,7 +114,14 @@
                                     パスワード<span class="text-danger">(※)</span>
                                 </label>
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="********">
+                                    <input 
+                                        id="password" 
+                                        type="password" 
+                                        class="form-control @error('password') is-invalid @enderror" 
+                                        name="password" 
+                                        autocomplete="new-password" 
+                                        placeholder="********"
+                                    >
                                     <small class="text-dark">半角英数字8文字以上を入力してください。</small>
                                     @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -98,7 +136,14 @@
                                     パスワード(確認)<span class="text-danger">(※)</span>
                                 </label>
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" placeholder="********">
+                                    <input 
+                                        id="password-confirm" 
+                                        type="password" 
+                                        class="form-control" 
+                                        name="password_confirmation" 
+                                        autocomplete="new-password" 
+                                        placeholder="********"
+                                    >
                                     <small class="text-dark">確認のためパスワードを再度入力してください。</small>
                                 </div>
                             </div>

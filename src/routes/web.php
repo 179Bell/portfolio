@@ -18,4 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('users', 'UsersController', ['only' => ['show']]);
+//記事一覧ページへのルーティング
 Route::resource('camps', 'CampsController', ['only' => ['index']]);
+// 認証済ユーザのみのルーティング
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('camps', 'CampsController', ['only' => ['create','store']]);
+});

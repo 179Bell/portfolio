@@ -13,7 +13,7 @@ class CreateCampsImgTable extends Migration
      */
     public function up()
     {
-        Schema::create('camp_img', function (Blueprint $table) {
+        Schema::create('camp_imgs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->bigInteger('camp_id')->unsigned();
             $table->string('img_path')->nullable();

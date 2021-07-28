@@ -151,6 +151,11 @@ return [
         'bike' => '車種',
         'password' => 'パスワード',
         'avatar' => 'プロフィール画像',
+        'title'=> 'タイトル',
+        'location' => 'キャンプ場名',
+        'date' => '日付',
+        'camp_img' => '画像',
+        'discription' => 'コメント',
     ],
 
 ];
