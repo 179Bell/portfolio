@@ -22,5 +22,5 @@ Route::resource('users', 'UsersController', ['only' => ['show']]);
 Route::resource('camps', 'CampsController', ['only' => ['index']]);
 // 認証済ユーザのみのルーティング
 Route::group(['middleware' => ['auth']], function() {
-    Route::resource('camps', 'CampsController', ['only' => ['create','store']]);
+    Route::resource('camps', 'CampsController', ['only' => ['create', 'store']]);
 });
