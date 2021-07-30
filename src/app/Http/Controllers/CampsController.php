@@ -8,7 +8,6 @@ use App\Camp;
 use App\User;
 use App\CampImg;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 
 class CampsController extends Controller
 {
@@ -37,7 +36,6 @@ class CampsController extends Controller
         //画像のパスを取得、保存
         $filename = $request->file('camp_img')->getClientOriginalName();
         $img_path = $request->file('camp_img')->storeAs('public/images', $filename);
-        // dd($img_path);
         $camp->campImgs()->create(['img_path' => $filename]);
 
         return redirect()->route('camps.index');
