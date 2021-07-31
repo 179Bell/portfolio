@@ -41,7 +41,7 @@
                         <!--  -->
 
                         <!-- 投稿本体 -->
-                        <a style="text-decoration:none" href="" class="text-dark">
+                        <a style="text-decoration:none" href="{{ route('camps.show', ['camp' => $camp]) }}" class="text-dark">
                             <div class="container">
                                 <div class="card-body">
                                     @foreach ($camp->campImgs as $campImg)

@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 //記事一覧ページへのルーティング
-Route::resource('camps', 'CampsController', ['only' => ['index']]);
+Route::resource('camps', 'CampsController', ['only' => ['index', 'show']]);
 
 Route::resource('users', 'UsersController', ['only' => ['show']]);
 
