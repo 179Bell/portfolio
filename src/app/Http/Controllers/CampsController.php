@@ -18,10 +18,11 @@ class CampsController extends Controller
         return view('camps.index', ['camps' => $camps]);
     }
 
-    // public function show()
-    // {
-    //     return view('camps.show');
-    // }
+    public function show(Camp $camp)
+    {
+        $campImgs = Camp::with('campImgs')->get();
+        return view('camps.show', ['camp' => $camp, 'campImgs' => $campImgs]);
+    }
 
     public function create()
     {
