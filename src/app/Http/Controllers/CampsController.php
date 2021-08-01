@@ -62,4 +62,9 @@ class CampsController extends Controller
                 return redirect()->route('camps.index');
     }
 
+    public function destroy(Camp $camp)
+    {
+        $camp->delete();
+        return redirect()->route('camps.index');
+    }
 }

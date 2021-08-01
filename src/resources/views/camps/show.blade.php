@@ -23,12 +23,12 @@
                                         <i class="fas fa-ellipsis-v"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="">
-                                            <i class="fas fa-pen mr-1"></i>記事を更新する
+                                        <a class="dropdown-item" href="{{ route('camps.edit', ['camp' => $camp]) }}">
+                                            <i class="fas fa-pen mr-1"></i>編集する
                                             </a>
                                     <div class="dropdown-divider"></div>
                                         <a class="dropdown-item text-danger" data-toggle="modal" data-target=>
-                                            <i class="fas fa-trash-alt mr-1"></i>記事を削除する
+                                            <i class="fas fa-trash-alt mr-1"></i>削除する
                                         </a>
                                     </div>
                                     <!--  -->

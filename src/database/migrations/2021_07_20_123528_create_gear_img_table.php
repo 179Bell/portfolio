@@ -18,7 +18,7 @@ class CreateGearImgTable extends Migration
             $table->bigInteger('gear_id')->unsigned();
             $table->string('img_path')->nullable();
             $table->timestamps();
-            $table->foreign('gear_id')->references('id')->on('gears');
+            $table->foreign('gear_id')->references('id')->on('gears')->onDelete('cascade');
         });
     }
 
