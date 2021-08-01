@@ -18,8 +18,11 @@ class CreateLikeTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('camp_id')->unsigned();
             $table->timestamps();
+            
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('camp_id')->references('id')->on('camps');
+
+            $table->unique(['user_id', 'camp_id']);
         });
     }
 

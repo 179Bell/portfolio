@@ -42,4 +42,40 @@ class User extends Authenticatable
     {
         return $this->hasMany(Camp::class);
     }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Camp::class, 'likes', 'user_id', 'camp_id')->withTimestamps();
+    }
+
+    // いいねの有無を確認する
+    public function is_like($campId)
+    {
+        return $this->likes()->where('camp_id', $campId)->exists();
+    }
+
+    //いいねをする
+    public function like($campId)
+    {
+        $exist = $this->is_like($campId);
+
+        if ($exist) {
+            return false;
+        } else {
+            $this->likes()->attach($campId);
+        }
+    }
+    //いいねを外す
+    public function unlike($campId)
+    {
+        $exist = $this->is_like($campId);
+
+        if ($exist) {
+            $this->likes()->detach($campId);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
 }

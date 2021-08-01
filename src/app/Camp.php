@@ -19,4 +19,9 @@ class Camp extends Model
     {
         return $this->hasMany(CampImg::class);
     }
+
+    public function like_users()
+    {
+            return $this->belongsToMany(User::class, 'likes', 'camp_id', 'user_id')->withTimestamps();
+    }
 }
