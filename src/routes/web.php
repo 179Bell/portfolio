@@ -17,12 +17,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//記事一覧ページへのルーティング
-Route::resource('camps', 'CampsController', ['only' => ['index', 'show']]);
-
 Route::resource('users', 'UsersController', ['only' => ['show']]);
 
 // 認証済ユーザのみのルーティング
 Route::group(['middleware' => ['auth']], function() {
-    Route::resource('camps', 'CampsController', ['only' => ['create', 'store', 'edit', 'update']]);
+    Route::resource('camps', 'CampsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
 });
+
+//記事一覧ページへのルーティング
+Route::resource('camps', 'CampsController', ['only' => ['index', 'show']]);

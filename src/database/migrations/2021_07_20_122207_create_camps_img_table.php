@@ -18,7 +18,7 @@ class CreateCampsImgTable extends Migration
             $table->bigInteger('camp_id')->unsigned();
             $table->string('img_path')->nullable();
             $table->timestamps();
-            $table->foreign('camp_id')->references('id')->on('camps');
+            $table->foreign('camp_id')->references('id')->on('camps')->onDelete('cascade');
         });
     }
 
