@@ -20,10 +20,14 @@ Auth::routes();
 Route::resource('users', 'UsersController', ['only' => ['show']]);
 // 認証済ユーザのみのルーティング
 Route::group(['middleware' => ['auth']], function() {
-    //いいね機能
     Route::group(['prefix'=>'camps/{id}'],function(){
+        //いいね機能
         Route::post('like', 'LikesController@store')->name('like');
         Route::post('unlike', 'LikesController@destroy')->name('unlike');
+        //お気に入り
+        Route::post('bookmark', 'BookmarksController@store')->name('bookmark');
+        Route::post('unbookmark', 'BookmarksController@destroy')->name('unbookmark');
+
     });
     Route::resource('camps', 'CampsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
 });

@@ -104,7 +104,30 @@
                                                 </form>
                                             </div>
                                         @endif
+
+                                        @if(Auth::user()->is_bookmark($camp->id))
+                                            <div class="float-right ml-2">
+                                                <form action="{{ route('unbookmark', $camp->id) }}" method="POST">
+                                                    @csrf
+                                                    <input type="submit" value="&#xf7a9;お気に入りから外す" class="fas btn btn-danger">
+                                                </form>
+                                            </div>
+                                        @else
+                                            <div class="float-right">
+                                                <form action="{{ route('bookmark', $camp->id) }}" method="POST">
+                                                @csrf
+                                                    <input type="submit" value="&#xf004;お気に入りに登録する" class="fas btn btn-success">
+                                                </form>
+                                            </div>
+                                        @endif
                                     @endif
+                                </div>
+                            </div>
+
+                            <div class="row justify-content-center">
+                                <div class="col-md-10">
+                                    <p>お気に入り数：{{ $camp->bookmark_users()->count() }}</p>
+                                    <p>いいね数：{{ $camp->like_users()->count() }}</p>
                                 </div>
                             </div>
                         </div>
