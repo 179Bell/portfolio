@@ -18,8 +18,11 @@ class CreateBookmarkTable extends Migration
             $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('camp_id')->unsigned();
             $table->timestamps();
+            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('camp_id')->references('id')->on('camps')->onDelete('cascade');
+
+            $table->unique(['user_id', 'camp_id']);
         });
     }
 
