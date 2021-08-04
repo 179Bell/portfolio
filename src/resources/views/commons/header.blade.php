@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand navbar-light bg-light">
     <a class="navbar-brand" href="{{ route('camps.index') }}"><i class="fas fa-campground"></i>ポートフォリオ</a>
     <ul class="navbar-nav ml-auto mr-3">
-        
-        @if(Auth::check())
+
+        @if (Auth::check())
             <!-- Dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" 

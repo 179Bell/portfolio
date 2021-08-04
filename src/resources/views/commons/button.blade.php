@@ -3,9 +3,9 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <!-- 自分の投稿にはボタンを表示しない -->
-            @if(Auth::check())
-                @if( Auth::id() !=  $camp->user_id )
-                    @if(Auth::user()->is_like($camp->id))
+            @if (Auth::check())
+                @if (Auth::id() !=  $camp->user_id)
+                    @if (Auth::user()->is_like($camp->id))
                         <div class="float-right">
                             <form action="{{ route('unlike', $camp->id) }}" method="POST">
                                 @csrf
@@ -21,7 +21,7 @@
                         </div>
                     @endif
 
-                    @if(Auth::user()->is_bookmark($camp->id))
+                    @if (Auth::user()->is_bookmark($camp->id))
                         <div class="float-right ml-2">
                             <form action="{{ route('unbookmark', $camp->id) }}" method="POST">
                                 @csrf

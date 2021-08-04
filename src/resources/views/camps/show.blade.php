@@ -17,7 +17,7 @@
                                 <p class="font-weight-bold ml-2">{{ $camp->user->name }}</p>
                                 <p class="font-weight-lighter ml-2">{{ $camp->created_at->format('Y/m/d H:i') }}</p>
 
-                                @if(Auth::check())
+                                @if (Auth::check())
                                     <!-- ドロップダウン -->
                                     <div class="dropdown">
                                         <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
