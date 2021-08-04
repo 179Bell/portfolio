@@ -14,6 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
 //認証ルート
 Auth::routes();
 //キャンプ詳細表示

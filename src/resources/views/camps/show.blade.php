@@ -17,22 +17,24 @@
                                 <p class="font-weight-bold ml-2">{{ $camp->user->name }}</p>
                                 <p class="font-weight-lighter ml-2">{{ $camp->created_at->format('Y/m/d H:i') }}</p>
 
-                                <!-- ドロップダウン -->
-                                <div class="dropdown">
-                                    <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <i class="fas fa-ellipsis-v"></i>
-                                    </a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href="{{ route('camps.edit', ['camp' => $camp]) }}">
-                                            <i class="fas fa-pen mr-1"></i>編集する
-                                            </a>
-                                    <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item text-danger" data-toggle="modal" data-target=>
-                                            <i class="fas fa-trash-alt mr-1"></i>削除する
+                                @if (Auth::check())
+                                    <!-- ドロップダウン -->
+                                    <div class="dropdown">
+                                        <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fas fa-ellipsis-v"></i>
                                         </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="{{ route('camps.edit', ['camp' => $camp]) }}">
+                                                <i class="fas fa-pen mr-1"></i>編集する
+                                                </a>
+                                        <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item text-danger" data-toggle="modal" data-target=>
+                                                <i class="fas fa-trash-alt mr-1"></i>削除する
+                                            </a>
+                                        </div>
+                                        <!--  -->
                                     </div>
-                                    <!--  -->
-                                </div>  
+                                @endif  
                             </div>
                         </div>
                     </div>
@@ -40,20 +42,16 @@
                 <!--  -->
 
                 <!-- 投稿本体 -->
-                <div class="container">
-                    <div class="card-body">
-                        @foreach ($camp->campImgs as $campImg)
-                            <img src="{{ asset('storage/images/'.$campImg->img_path) }}" width="400" height="300">
-                        @endforeach
-                    </div>
-                    <div  class="card-body">
-                        <h3>{{ $camp->title }}</h3>
-                        <p><i class="fas fa-map-marker-alt"></i>{{ $camp->location }}</p>
-                        <p>{{ $camp->discription }}</p>
-                    </div>
-                    <a  class="btn btn-secondary col-md-8 btn-block" href="{{ route('camps.index') }}">戻る</a>
-                </div>
+
+                @include('commons.card')
+
+                @include('commons.button')
+
+                <a  class="btn btn-secondary col-md-8 btn-block" href="{{ route('camps.index') }}">戻る</a>
+
                 <!--  -->
+
+
                 
             </div>
         </div>
