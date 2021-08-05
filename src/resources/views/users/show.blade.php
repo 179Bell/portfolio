@@ -41,6 +41,10 @@
             
             <h3 class="text-center mb-4 text-dark">ギア一覧</h3>
 
+            @if (Auth::id() == $auth->id)
+                <a class="btn btn-success col-md-2" href="{{ route('gears.create') }}" role="button">ギアを登録する</a>
+            @endif
+
 
         </div>
     </div>
