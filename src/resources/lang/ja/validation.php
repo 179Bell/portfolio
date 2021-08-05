@@ -156,6 +156,9 @@ return [
         'date' => '日付',
         'camp_img' => '画像',
         'discription' => 'コメント',
+        'comment' => 'コメント',
+        'maker' => 'メーカー',
+        'gear_imd' => '画像',
     ],
 
 ];

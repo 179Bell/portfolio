@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('bike');
-            $table->string('avatar')->nullable();
+            $table->string('avatar')->default('human.png');
             $table->unique(['email','deleted_at']);
             $table->rememberToken();
             $table->timestamps();
@@ -34,6 +34,8 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('avatar');
+        });
     }
 }

@@ -28,9 +28,9 @@ Route::group(['middleware' => ['auth']], function() {
         //お気に入り
         Route::post('bookmark', 'BookmarksController@store')->name('bookmark');
         Route::post('unbookmark', 'BookmarksController@destroy')->name('unbookmark');
-
     });
     Route::resource('camps', 'CampsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource('gears', 'GearsController', ['only' => ['create', 'store']]);
 });
 //記事一覧ページへのルーティング
 Route::resource('camps', 'CampsController', ['only' => ['index', 'show']]);
