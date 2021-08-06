@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth']], function() {
     });
     Route::resource('camps', 'CampsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     Route::resource('gears', 'GearsController', ['only' => ['create', 'store']]);
+    Route::post('comments', 'CommentsController@store')->name('comments.store');
 });
 //記事一覧ページへのルーティング
 Route::resource('camps', 'CampsController', ['only' => ['index', 'show']]);
