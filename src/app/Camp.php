@@ -27,6 +27,11 @@ class Camp extends Model
 
     public function bookmark_users()
     {
-            return $this->belongsToMany(User::class, 'likes', 'camp_id', 'user_id')->withTimestamps();
+            return $this->belongsToMany(User::class, 'bookmarks', 'camp_id', 'user_id')->withTimestamps();
+    }
+
+    public function comments()
+    {
+            return $this->hasMany(Comment::class);
     }
 }
