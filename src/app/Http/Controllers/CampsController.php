@@ -67,4 +67,18 @@ class CampsController extends Controller
         $camp->delete();
         return redirect()->route('camps.index');
     }
+
+    public function camp_list($id)
+    {
+        $user = User::find($id);
+        // キャンプ情報を取得
+        $camps = $user->camps()->get();
+        //コレクションからidを取得
+        foreach($camps as $key=>$value){
+            $camp_id = $value->id;
+        }
+        //ギア画像の取得
+        $campImgs = Camp::with('campImgs')->find($camp_id);
+        return view('camps.list', compact('user', 'camps', 'campImgs'));
+    }
 }
