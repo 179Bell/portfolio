@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Gear;
 use App\GearImg;
 use Illuminate\Http\Request;
@@ -26,5 +27,11 @@ class GearsController extends Controller
         $gear->gearImgs()->create(['img_path' => $filename]);
 
         return redirect()->route('camps.index');
+    }
+
+    public function gear_list($id)
+    {
+        $user = User::find($id);
+        return view('gears.list', compact('user', 'gears'));
     }
 }

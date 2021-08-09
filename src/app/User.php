@@ -53,6 +53,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Camp::class, 'bookmarks', 'user_id', 'camp_id')->withTimestamps();
     }
 
+    public function gears()
+    {
+        return $this->hasMany(Gear::class);
+    }
+
     // いいねの有無を確認する
     public function is_like($campId)
     {

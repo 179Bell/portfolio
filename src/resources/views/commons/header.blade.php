@@ -10,7 +10,7 @@
                     <img src="{{ asset('storage/images/'.Auth::user()->avatar) }}" class="rounded-circle" width="50" height="50">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" type="button" href="{{ route('users.show', Auth::id()) }}">
+                <a class="dropdown-item" type="button" href="{{ route('users.profile', ['id' => Auth::id()]) }}">
                     <i class="far fa-user"></i>マイページ
                 </a>
                 <div class="dropdown-divider"></div>
