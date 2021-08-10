@@ -28,9 +28,9 @@
                             <div class="form-group row">
                                 <label for="maker">メーカーを選択</label>
                                 <p>
-                                <select id="maker" name="maker_id">
+                                <select id="maker" name="maker_name">
                                     @foreach(\MakerConst::MAKER_LIST as $key => $name)
-                                    <option value="{{ $key }}">{{ $name }}</option>
+                                        <option value="{{ $name }}">{{ $name }}</option>
                                     @endforeach
                                 </select>
                                 </p>

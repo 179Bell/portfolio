@@ -28,10 +28,4 @@ class GearsController extends Controller
 
         return redirect()->route('camps.index');
     }
-
-    // public function gear_list($id)
-    // {
-    //     $user = User::find($id);
-    //     return view('gears.list', compact('user', 'gears'));
-    // }
 }
