@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Gear extends Model
 {
     protected $fillable = [
-        'name', 'comment', 'maker_id'
+        'name', 'comment', 'maker_name'
     ];
     
     public function gearImgs()

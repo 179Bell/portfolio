@@ -18,7 +18,7 @@ class CreateGearTable extends Migration
             $table->string('name');
             $table->string('comment');
             $table->bigInteger('user_id')->unsigned();
-            $table->bigInteger('maker_id');
+            $table->string('maker_name');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });

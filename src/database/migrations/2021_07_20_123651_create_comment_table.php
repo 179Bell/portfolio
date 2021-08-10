@@ -21,7 +21,6 @@ class CreateCommentTable extends Migration
             $table->timestamps();
 
             $table->foreign('camp_id')->references('id')->on('camps')->onDelete('cascade');
-
         });
     }
 
