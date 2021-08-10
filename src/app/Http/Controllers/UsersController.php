@@ -42,7 +42,7 @@ class UsersController extends Controller
         //ユーザーの持つギアの取得
         $gears = $user->gears()->get();
         //ユーザーがギアを持つかどうか確認
-        if($gears->isEmpty()){
+        if ($gears->isEmpty()) {
             return view('users.profile', compact('user', 'gears'));
             } else {
             //コレクションからidを取得
