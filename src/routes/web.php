@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth']], function() {
         //いいね機能
         Route::post('like', 'LikesController@store')->name('like');
         Route::post('unlike', 'LikesController@destroy')->name('unlike');
-        //お気に入り
+        //お気に入り機能
         Route::post('bookmark', 'BookmarksController@store')->name('bookmark');
         Route::post('unbookmark', 'BookmarksController@destroy')->name('unbookmark');
     });
@@ -34,6 +34,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('gears', 'GearsController', ['only' => ['create', 'store']]);
     // コメントの投稿
     Route::post('comments', 'CommentsController@store')->name('comments.store');
+    // ユーザー情報の変更
+    Route::resource('users', 'UsersController', ['only' => ['edit', 'update', 'destroy']]);
 });
 //キャンプの一覧と詳細表示
 Route::resource('camps', 'CampsController', ['only' => ['index', 'show']]);
