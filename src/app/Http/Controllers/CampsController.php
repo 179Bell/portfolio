@@ -15,13 +15,13 @@ class CampsController extends Controller
     {
         //N+1問題対策
         $camps = Camp::with('user', 'campImgs')->orderBy('id', 'desc')->paginate(10);
-        return view('camps.index', ['camps' => $camps]);
+        return view('camps.index', compact('camps'));
     }
 
     public function show(Camp $camp)
     {
         $campImgs = Camp::with('campImgs')->get();
-        return view('camps.show', ['camp' => $camp, 'campImgs' => $campImgs]);
+        return view('camps.show', compact('camp', 'campImgs'));
     }
 
     public function create()
@@ -46,7 +46,7 @@ class CampsController extends Controller
     {
         //画像を取得
         $campImgs = Camp::with('campImgs')->get();
-        return view('camps.edit', ['camp' => $camp, 'campImgs' => $campImgs]);
+        return view('camps.edit', compact('camp', 'campImgs'));
     }
 
     public function update(CampRequest $request, Camp $camp, CampImg $campImg)
@@ -73,11 +73,15 @@ class CampsController extends Controller
         $user = User::find($id);
         // キャンプ情報を取得
         $camps = $user->camps()->get();
-        //コレクションからidを取得
-        foreach($camps as $key=>$value){
-            $camp_id = $value->id;
+        if ($camps->isEmpty()) {
+            return view('camps.list', compact('user', 'camps'));
+        } else {
+            //コレクションからidを取得
+            foreach ($camps as $key => $value) {
+                $camp_id = $value->id;
+            }
         }
-        //ギア画像の取得
+        //キャンプ画像の取得
         $campImgs = Camp::with('campImgs')->find($camp_id);
         return view('camps.list', compact('user', 'camps', 'campImgs'));
     }
