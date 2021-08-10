@@ -24,7 +24,7 @@
 <div class="d-flex justify-content-center my-2">
     <a class="btn btn-secondary col-md-2 mr-2" href="{{ route('camps.index') }}" role="button">戻る</a>
     @if(Auth::id() == $user->id)
-        <a class="btn btn-success col-md-2" href="" role="button">編集</a>
+        <a class="btn btn-success col-md-2" href="{{ route('users.edit', ['user' => $user]) }}" role="button">編集</a>
     @endif
 </div>
 

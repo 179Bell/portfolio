@@ -51,15 +51,15 @@ class CampsController extends Controller
 
     public function update(CampRequest $request, Camp $camp, CampImg $campImg)
     {
-                // キャンプ情報を更新
-                $camp->fill($request->all())->save();
-                //画像が更新されているか確認、更新
-                if ($request->hasFile('camp_img')) {
-                    $filename = $request->file('camp_img')->getClientOriginalName();
-                    $img_path = $request->file('camp_img')->storeAs('public/images', $filename);
-                    $camp->campImgs()->create(['img_path' => $filename]);
-                }
-                return redirect()->route('camps.index');
+        // キャンプ情報を更新
+        $camp->fill($request->all())->save();
+        //画像が更新されているか確認、更新
+        if ($request->hasFile('camp_img')) {
+            $filename = $request->file('camp_img')->getClientOriginalName();
+            $img_path = $request->file('camp_img')->storeAs('public/images', $filename);
+            $camp->campImgs()->create(['img_path' => $filename]);
+        }
+        return redirect()->route('camps.index');
     }
 
     public function destroy(Camp $camp)
