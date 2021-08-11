@@ -16,9 +16,9 @@ class CampPolicy
      * @param  \App\User  $user
      * @return mixed
      */
-    public function viewAny(User $user)
+    public function viewAny(?User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -28,9 +28,9 @@ class CampPolicy
      * @param  \App\Camp  $camp
      * @return mixed
      */
-    public function view(User $user, Camp $camp)
+    public function view(?User $user, Camp $camp)
     {
-        //
+        return true;
     }
 
     /**
@@ -41,7 +41,7 @@ class CampPolicy
      */
     public function create(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -53,7 +53,7 @@ class CampPolicy
      */
     public function update(User $user, Camp $camp)
     {
-        //
+        return $user->id === $camp->user_id;
     }
 
     /**
@@ -65,30 +65,6 @@ class CampPolicy
      */
     public function delete(User $user, Camp $camp)
     {
-        //
-    }
-
-    /**
-     * Determine whether the user can restore the camp.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Camp  $camp
-     * @return mixed
-     */
-    public function restore(User $user, Camp $camp)
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can permanently delete the camp.
-     *
-     * @param  \App\User  $user
-     * @param  \App\Camp  $camp
-     * @return mixed
-     */
-    public function forceDelete(User $user, Camp $camp)
-    {
-        //
+        return $user->id === $camp->user_id;
     }
 }

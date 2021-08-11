@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\Auth;
 
 class CampsController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Camp::class, 'camp');
+    }
+
     public function index()
     {
         //N+1問題対策
