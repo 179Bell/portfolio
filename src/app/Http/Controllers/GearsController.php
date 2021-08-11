@@ -28,4 +28,10 @@ class GearsController extends Controller
 
         return redirect()->route('camps.index');
     }
+
+    public function destroy(Gear $gear)
+    {
+        $gear->delete();
+        return redirect()->route('camps.index');
+    }
 }

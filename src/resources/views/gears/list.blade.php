@@ -22,6 +22,13 @@
                             <p>{{ $gear->maker_name }}</p>
                             <p>{{ $gear->comment }}</p>
                         </div>
+                        @if($user->id == Auth::id())
+                            <form method="POST" action="{{ route('gears.destroy', ['gear' => $gear]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger"><i class="fas fa-trash-alt mr-1"></i>削除する</button>
+                            </form>
+                        @endif
                     </div>
                 </div>
             @endforeach

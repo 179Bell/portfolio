@@ -31,7 +31,7 @@ Route::group(['middleware' => ['auth']], function() {
     // キャンプのCRUD処理
     Route::resource('camps', 'CampsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
     // ギアの登録
-    Route::resource('gears', 'GearsController', ['only' => ['create', 'store']]);
+    Route::resource('gears', 'GearsController', ['only' => ['create', 'store', 'destroy']]);
     // コメントの投稿
     Route::post('comments', 'CommentsController@store')->name('comments.store');
     // ユーザー情報の変更

@@ -11,7 +11,7 @@
                             <a href="{{ route('users.profile', ['id' => $user->id]) }}">
                                 <img src="{{ asset('storage/images/'.$camp->user->avatar) }}" class="rounded-circle" width="90" height="90">
                             </a>
-                            <p class="font-weight-bold ml-2">{{ $user->name }}</p>
+                            <p class="font-weight-bold ml-2">{{ $camp->user->name }}</p>
                             <p class="font-weight-lighter ml-2">{{ $camp->created_at->format('Y/m/d H:i') }}</p>
                         </div>
                     </div>   
