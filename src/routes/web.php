@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 //認証ルート
 Auth::routes();
-
+Route::get('camps/search', 'CampsController@search')->name('camps.search');
 // 認証済ユーザのみのルーティング
 Route::group(['middleware' => ['auth']], function() {
     Route::group(['prefix' => 'camps/{id}'],function(){
@@ -44,5 +44,6 @@ Route::get('users/{id}/profile', 'UsersController@profile')->name('users.profile
 Route::get('bookmark/{id}', 'BookmarksController@show')->name('bookmark.show');
 Route::get('camps_list/{id}', 'CampsController@camp_list')->name('camps.list');
 Route::get('gears_list/{id}', 'GearsController@gear_list')->name('gears.list');
+
 
 

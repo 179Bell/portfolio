@@ -85,4 +85,26 @@ class CampsController extends Controller
         $campImgs = Camp::with('campImgs')->find($camp_id);
         return view('camps.list', compact('user', 'camps', 'campImgs'));
     }
+
+    public function search(Request $request){
+        //requestから検索ワードを受け取る
+        $keyword = $request->keyword;
+
+        $query = Camp::query();
+        // キャンプを検索
+        if (!empty($keyword)) {
+            $query->where('location', 'like', '%'.$keyword.'%');
+        }
+        $data = $query->get();
+        
+        foreach ($data as $key => $value) {
+            $camp_id = $value->id;
+            $user_id = $value->user_id;
+            $user = User::find($user_id);
+            $campImgs = Camp::with('campImgs')->find($camp_id);
+        }
+
+        
+        return view('camps.result', compact('data', 'user', 'campImgs'));
+    }
 }

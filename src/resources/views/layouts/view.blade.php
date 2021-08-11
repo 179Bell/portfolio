@@ -20,10 +20,7 @@
     @include('commons.header')
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
-                @include('commons.sidemenu')
-            </div>
-            <div class="col-lg-9">
+            <div class="col-lg-12">
                 @yield('content')
             </div>
         </div>

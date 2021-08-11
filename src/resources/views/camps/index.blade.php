@@ -2,6 +2,20 @@
 
 @section('content')
 
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mt-3">
+                <form action="{{ route('camps.search') }}" method="POST">
+                    @csrf
+                    @method('GET')
+                    <input type="text" placeholder="キャンプ場名を入力してください" name="keyword">
+                    <button type="submit">検索</button>
+                </form>
+            </div>
+        </div> 
+    </div>
+        
+    
     @foreach ( $camps as $camp )
         <div class="card mt-3">
             <!-- カードヘッダー -->
