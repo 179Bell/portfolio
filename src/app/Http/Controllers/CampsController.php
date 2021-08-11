@@ -96,15 +96,13 @@ class CampsController extends Controller
             $query->where('location', 'like', '%'.$keyword.'%');
         }
         $data = $query->get();
-        
+        // 取得したクエリからidを取得しユーザー情報と画像を取得
         foreach ($data as $key => $value) {
             $camp_id = $value->id;
             $user_id = $value->user_id;
             $user = User::find($user_id);
             $campImgs = Camp::with('campImgs')->find($camp_id);
         }
-
-        
         return view('camps.result', compact('data', 'user', 'campImgs'));
     }
 }
