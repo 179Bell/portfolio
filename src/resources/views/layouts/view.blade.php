@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,14 +17,13 @@
 </head>
 
 <body>
-    
     @include('commons.header')
     <div class="container">
         <div class="row">
-            <div class="col-lg-2">
-
+            <div class="col-lg-3">
+                @include('commons.sidemenu')
             </div>
-            <div class="col-lg-10">
+            <div class="col-lg-9">
                 @yield('content')
             </div>
         </div>
