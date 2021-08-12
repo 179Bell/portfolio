@@ -2,33 +2,52 @@
 
 @section('content')
 
-    <div class="container">
+    <!-- <div class="container">
         <div class="row">
-            <div class="col-lg-8 mt-3">
+            <div class="col-lg-8">
                 <form action="{{ route('camps.search') }}" method="POST">
-                    @csrf
-                    @method('GET')
-                    <input type="text" placeholder="キャンプ場名を入力してください" name="keyword">
-                    <button type="submit">検索</button>
+                    <div class="d-flex flex-row align-items-center">
+                        @csrf
+                        @method('GET')
+                        <input type="text" placeholder="キャンプ場名を入力してください" name="keyword" class="form-control">
+                        <button type="submit">検索</button>
+                    </div>
                 </form>
             </div>
         </div> 
+    </div> -->
+    <div class="container mt-2">
+        <div class="row">
+            <div class="col-lg-9">
+                <form action="{{ route('camps.search') }}" method="POST">
+                    <div class="input-group input-group-lg">
+                        <input type="text" class="form-control" placeholder="キャンプ場名を探す？" name="keyword">
+                        <div class="input-group-btn">
+                            <button class="btn btn-lg btn-success" type="submit"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
-        
     
+
+        
     @foreach ( $camps as $camp )
         <div class="card mt-3">
             <!-- カードヘッダー -->
             <div class="card-header">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12 align-items-center d-flex flex-row">
-                            <a href="{{ route('users.profile', ['id' => $camp->user->id]) }}">
-                                <img src="{{ asset('storage/images/'.$camp->user->avatar) }}" class="rounded-circle" width="90" height="90">
-                            </a>
-                            <p class="font-weight-bold ml-2">{{ $camp->user->name }}</p>
-                            <p class="font-weight-lighter ml-2">{{ $camp->created_at->format('Y/m/d H:i') }}</p>
-
+                        <div class="col">
+                            <div class="d-flex flex-row align-items-center">
+                                <a href="{{ route('users.profile', ['id' => $camp->user->id]) }}">
+                                    <img src="{{ asset('storage/images/'.$camp->user->avatar) }}" class="rounded-circle" width="90" height="90">
+                                </a>
+                                <h5 class="font-weight-bold ml-2">{{ $camp->user->name }}</h5>
+                                <p class="font-weight-lighter ml-2">{{ $camp->created_at->format('Y/m/d H:i') }}</p>
+                            </div>
+                        </div>
                             @if (Auth::id() == $camp->user->id)
                                 <!-- ドロップダウン -->
                                 <div class="dropdown">
@@ -47,7 +66,6 @@
                                     </div>
                                 </div>
                                 <!-- ドロップダウン -->
-
                                 <!-- モーダル -->
                                 <div id="modal-delete-{{ $camp->id }}" class="modal fade" tabindex="-1" role="dialog">
                                     <div class="modal-dialog" role="document">
@@ -73,7 +91,7 @@
                                 </div>
                             @endif
                             <!-- モーダル -->
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -85,13 +103,6 @@
                 </a>
 
                 @include('commons.button')
-
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <p>お気に入り数：{{ $camp->bookmark_users()->count() }}</p>
-                        <p>いいね数：{{ $camp->like_users()->count() }}</p>
-                    </div>
-                </div>
             </div>
         </div>
     @endforeach
