@@ -24,13 +24,6 @@
                 </a>
 
                 @include('commons.button')
-
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <p>お気に入り数：{{ $camp->bookmark_users()->count() }}</p>
-                        <p>いいね数：{{ $camp->like_users()->count() }}</p>
-                    </div>
-                </div>
             </div>
         </div>
     @endforeach

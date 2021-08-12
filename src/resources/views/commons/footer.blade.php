@@ -1,5 +1,5 @@
-<footer class="mt-5 footer bg-light">
+<footer class="mt-5 footer bg-success">
     <div class="text-center">
-        <p class="text-muted">Shingo Suzumura All rights reserved.</p>
+        <p class="text-light">Shingo Suzumura All rights reserved.</p>
     </div>
 </footer>
