@@ -20,6 +20,8 @@
         <div class="row">
             <div class="col-lg-9">
                 <form action="{{ route('camps.search') }}" method="POST">
+                    @csrf
+                    @method('GET')
                     <div class="input-group input-group-lg">
                         <input type="text" class="form-control" placeholder="キャンプ場名を探す？" name="keyword">
                         <div class="input-group-btn">
