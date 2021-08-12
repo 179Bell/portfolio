@@ -9,7 +9,7 @@
                     @csrf
                     @method('GET')
                     <div class="input-group input-group-lg">
-                        <input type="text" class="form-control" placeholder="キャンプ場名を探す？" name="keyword">
+                        <input type="text" class="form-control" placeholder="キャンプ場を探す？" name="keyword">
                         <div class="input-group-btn">
                             <button class="btn btn-lg btn-success" type="submit"><i class="fas fa-search"></i></button>
                         </div>

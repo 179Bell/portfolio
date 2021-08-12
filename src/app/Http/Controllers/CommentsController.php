@@ -16,6 +16,6 @@ class CommentsController extends Controller
         $comment->fill($request->all())->save();
         $camp = Camp::find($request->camp_id);
         $campImgs = Camp::with('campImgs')->get();
-        return redirect()->route('camps.show', compact('camp', 'campImgs'));
+        return redirect()->route('camps.show', compact('camp', 'campImgs'))->with('commentstatus', 'コメントを投稿しました');
     }
 }
