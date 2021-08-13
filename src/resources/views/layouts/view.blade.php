@@ -22,6 +22,11 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
+                @if (session('flash_message'))
+                    <div class="alert alert-success flash_message mt-2">
+                        {{ session('flash_message') }}
+                    </div>
+                @endif
                 @yield('content')
             </div>
         </div>

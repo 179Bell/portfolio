@@ -27,12 +27,12 @@ class GearsController extends Controller
             $img_path = $request->file('gear_img')->storeAs('public/images', $filename);
             $gear->gearImgs()->create(['img_path' => $filename]);
         }
-        return redirect()->route('camps.index');
+        return redirect()->route('camps.index')->with('flash_message', 'ギアを登録しました');;
     }
 
     public function destroy(Gear $gear)
     {
         $gear->delete();
-        return redirect()->route('camps.index');
+        return redirect()->route('camps.index')->with('flash_message', 'ギアを削除しました');;
     }
 }

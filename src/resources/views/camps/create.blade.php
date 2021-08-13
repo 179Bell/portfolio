@@ -43,7 +43,7 @@
                                 id="date"
                                 type="date" 
                                 name="date" 
-                                class="form-control  @error('date') is-invalid @enderror" 
+                                class="form-control @error('date') is-invalid @enderror" 
                                 value="{{ old('date') }}"
                             >
                         </div>
