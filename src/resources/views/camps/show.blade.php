@@ -1,7 +1,6 @@
 @extends('layouts.view')
 
 @section('content')
-
     <div class="card mt-3">
         @include('commons.card')
 
@@ -39,11 +38,6 @@
                                     </button>
                                 </div>
                             </form>
-                            @if (session('commentstatus'))
-                                <div class="alert alert-success mt-4 mb-4">
-                                    {{ session('commentstatus') }}
-                                </div>
-                            @endif
                         </div>
                     </div>
                 </div>
