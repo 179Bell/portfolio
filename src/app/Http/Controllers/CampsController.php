@@ -40,10 +40,11 @@ class CampsController extends Controller
         $camp->user_id = Auth::id();
         $camp->fill($request->all())->save();
         //画像のパスを取得、保存
-        $filename = $request->file('camp_img')->getClientOriginalName();
-        $img_path = $request->file('camp_img')->storeAs('public/images', $filename);
-        $camp->campImgs()->create(['img_path' => $filename]);
-
+        if ($request->hasFile('camp_img')) {
+            $filename = $request->file('camp_img')->getClientOriginalName();
+            $img_path = $request->file('camp_img')->storeAs('public/images', $filename);
+            $camp->campImgs()->create(['img_path' => $filename]);
+        }
         return redirect()->route('camps.index');
     }
 

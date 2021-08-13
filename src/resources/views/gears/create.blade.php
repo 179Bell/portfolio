@@ -25,61 +25,63 @@
                                 </div>
 
                                 <div class="form-group">
-                                        <label for="maker">メーカーを選択</label>
-                                        <p>
-                                        <select id="maker" name="maker_name">
-                                            @foreach(\MakerConst::MAKER_LIST as $key => $name)
-                                                <option value="{{ $name }}">{{ $name }}</option>
-                                            @endforeach
-                                        </select>
-                                        </p>
-                                    </div>
-                                    <div class="text-danger">
-                                        <p>{{ $errors->first('') }} </p>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="gear_img">画像を追加</label>
-                                        <div class="col-lg-6">
-                                            <input 
-                                                id="gear_img"
-                                                type="file" 
-                                                name="gear_img"
-                                            >
-                                            <br><small class="text-dark">画像は任意です。JPEG,PNGのみ対応</small>
-                                        </div>
-                                    </div>
-                                    <div class="text-danger">
-                                        <p>{{ $errors->first('gear_img') }}</p>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="comment">コメント</label>
-                                            <textarea
-                                                id="comment"
-                                                name="comment" 
-                                                class="form-control @error('comment') is-invalid @enderror" 
-                                                rows="16" 
-                                                class="col-lg-8"
-                                                placeholder="本文">{{ old('comment') }}</textarea>
-                                        
-                                    </div>
-                                    <div class="text-danger">
-                                        <p>{{ $errors->first('comment') }}</p>
-                                    </div>
+                                    <label for="maker">メーカーを選択</label>
+                                    <p>
+                                    <select id="maker" name="maker_name">
+                                        @foreach(\MakerConst::MAKER_LIST as $key => $name)
+                                            <option value="{{ $name }}">{{ $name }}</option>
+                                        @endforeach
+                                    </select>
+                                    </p>
+                                </div>
+                                <div class="text-danger">
+                                    <p>{{ $errors->first('') }} </p>
                                 </div>
 
-                                <button type="submit" class="btn col-lg-6 btn-success btn-block">投稿する</button>
+                                <div class="form-group">
+                                    <label for="gear_img">画像を追加</label>
+                                    <div class="col-lg-6">
+                                        <input 
+                                            id="gear_img"
+                                            type="file" 
+                                            name="gear_img"
+                                        >
+                                        <br><small class="text-dark">画像は任意です。JPEG,PNGのみ対応</small>
+                                    </div>
+                                </div>
+                                <div class="text-danger">
+                                    <p>{{ $errors->first('gear_img') }}</p>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="comment">コメント</label>
+                                        <textarea
+                                            id="comment"
+                                            name="comment" 
+                                            class="form-control @error('comment') is-invalid @enderror" 
+                                            rows="16" 
+                                            class="col-lg-8"
+                                            placeholder="本文">{{ old('comment') }}</textarea>
+                                    
+                                </div>
+                                <div class="text-danger">
+                                    <p>{{ $errors->first('comment') }}</p>
+                                </div>
+
+                                <div class="row justify-content-center">
+                                    <button type="submit" class="btn col-lg-6 btn-success btn-block">投稿する</button>
+                                </div>
+                                <div class="row justify-content-center mt-2">
+                                <a  class="btn col-lg-6 btn-secondary btn-block" href="{{ route('camps.index') }}">戻る</a>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
 
-        <div class="row justify-content-center">
-            <div class="mt-3 col-lg-6">
-                <a  class="btn btn-secondary btn-block" href="{{ route('camps.index') }}">戻る</a>
-            </div>
+                
+
         </div>
     </div>
 
