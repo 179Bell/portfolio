@@ -3,7 +3,6 @@
 @section('content')
 
     @include('users.user')
-
     @include('commons.tab')
 
     <div class="container">
