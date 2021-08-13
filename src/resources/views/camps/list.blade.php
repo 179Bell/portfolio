@@ -8,26 +8,42 @@
 
     <div class="container">
         <div class="row">
-            @if($camps->isEmpty())
-                <p>投稿はまだありません</p>
-            @else
-                @foreach($camps as $camp)
-                    <a href="{{ route('camps.show', ['camp' => $camp]) }}" class="text-dark">
-                        <div class="col-md-10 content-center">
-                            <div class="card mt-4">
-                                <div class="card-text">
-                                    <h3>{{ $camp->title }}</h3>
-                                </div>
-                                <div class="card-body">
-                                    @foreach($camp->campImgs as $campImg)
-                                        <img src="{{ asset('storage/images/'.$campImg->img_path) }}" width="300" height="200" >
-                                    @endforeach
-                                </div>
+            <div class=col-lg-12>
+                @if($camps->isEmpty())
+                    <div class="card mt-4">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <p>投稿はまだありません</p>
                             </div>
-                        </div>                        
-                    </a>
-                @endforeach
-            @endif
+                        </div>
+                    </div>
+                @else
+                    @foreach($camps as $camp)
+                        <a href="{{ route('camps.show', ['camp' => $camp]) }}" class="text-dark">
+                            <div class="card-deck">
+                                <div class="card mt-4">
+                                    <div class="row no-gutters">
+                                        <div class="col-lg-5 my-auto">
+                                            @foreach($camp->campImgs as $campImg)
+                                                <img src="{{ asset('storage/images/'.$campImg->img_path) }}" width="300" height="200" >
+                                            @endforeach
+                                        </div>
+                                        <div class="card-body col-lg-7">
+                                            <div class="card-title">
+                                                <h3>{{ $camp->title }}</h3>
+                                            </div>
+                                            <div class="card-text">
+                                                <p><i class="fas fa-map-marker-alt"></i>{{ $camp->location }}</p>
+                                                <p>{{ $camp->discription }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                      
+                        </a>
+                    @endforeach
+                @endif
+            </div>
         </div>
     </div>
 
