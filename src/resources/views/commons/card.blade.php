@@ -5,7 +5,7 @@
             <div class="col">
                 <div class="d-flex flex-row align-items-center">
                     <a href="{{ route('users.profile', ['id' => $camp->user->id]) }}">
-                        <img src="{{ asset('storage/images/'.$camp->user->avatar) }}" class="rounded-circle" width="90" height="90">
+                        <img src="{{ asset('storage/images/'.$camp->user->avatar) }}" class="rounded-circle border" width="90" height="90">
                     </a>
                     <h5 class="font-weight-bold ml-2">{{ $camp->user->name }}</h5>
                     <p class="font-weight-lighter ml-2">{{ $camp->created_at->format('Y/m/d H:i') }}</p>
