@@ -22,10 +22,11 @@ class GearsController extends Controller
         $gear->user_id = Auth::id();
         $gear->fill($request->all())->save();
         //画像のパスを取得、保存
-        $filename = $request->file('gear_img')->getClientOriginalName();
-        $img_path = $request->file('gear_img')->storeAs('public/images', $filename);
-        $gear->gearImgs()->create(['img_path' => $filename]);
-
+        if ($request->hasFile('gear_img')) {
+            $filename = $request->file('gear_img')->getClientOriginalName();
+            $img_path = $request->file('gear_img')->storeAs('public/images', $filename);
+            $gear->gearImgs()->create(['img_path' => $filename]);
+        }
         return redirect()->route('camps.index');
     }
 

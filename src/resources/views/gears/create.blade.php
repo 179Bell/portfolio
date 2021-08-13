@@ -2,71 +2,83 @@
 
 @section('content')
 
-    <div class="card mt-3">
-        <div class="card-body pt-0">
-            <div class="card-text">
-                <form method="POST" action="{{ route('gears.store') }}" enctype="multipart/form-data">
-                    @csrf
-                        <div class="col-md-8 mt-3">
-                            <label for="title">ギア名</label>
-                            <input 
-                                id="name"
-                                type="text" 
-                                name="name" 
-                                class="form-control" 
-                                value="{{ old('name') }}" 
-                                autofocus
-                            >
-                        </div>
-                        <div class="text-danger">
-                            <p>{{ $errors->first('name') }} </p>
-                        </div>
+    <div class="container">
+            <div class="card mt-2">
+                <div class="card-body">
+                    <div class="row justify-content-center">
+                        <div class="card-text col-lg-8">
+                            <form method="POST" action="{{ route('gears.store') }}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="mt-3 form-group row">
+                                    <label for="title">ギア名</label>
+                                    <input 
+                                        id="name"
+                                        type="text" 
+                                        name="name" 
+                                        class="form-control @error('name') is-invalid @enderror" 
+                                        value="{{ old('name') }}" 
+                                        autofocus
+                                    >
+                                </div>
+                                <div class="text-danger">
+                                    <p>{{ $errors->first('name') }} </p>
+                                </div>
 
-                        <div class="form-group row">
-                            <label for="maker">メーカーを選択</label>
-                            <p>
-                            <select id="maker" name="maker_name">
-                                @foreach(\MakerConst::MAKER_LIST as $key => $name)
-                                    <option value="{{ $name }}">{{ $name }}</option>
-                                @endforeach
-                            </select>
-                            </p>
-                        </div>
-                        <div class="text-danger">
-                            <p>{{ $errors->first('') }} </p>
-                        </div>
+                                <div class="form-group">
+                                        <label for="maker">メーカーを選択</label>
+                                        <p>
+                                        <select id="maker" name="maker_name">
+                                            @foreach(\MakerConst::MAKER_LIST as $key => $name)
+                                                <option value="{{ $name }}">{{ $name }}</option>
+                                            @endforeach
+                                        </select>
+                                        </p>
+                                    </div>
+                                    <div class="text-danger">
+                                        <p>{{ $errors->first('') }} </p>
+                                    </div>
 
-                        <div class="form-group row">
-                            <label for="gear_img">画像を追加</label>
-                            <div class="col-md-6">
-                                <input 
-                                    id="gear_img"
-                                    type="file" 
-                                    name="gear_img"
-                                >
-                                <br><small class="text-dark">サイズは1024Kbyteまで</small>
-                            </div>
-                        </div>
-                        <div class="text-danger">
-                            <p>{{ $errors->first('gear_img') }}</p>
-                        </div>
+                                    <div class="form-group">
+                                        <label for="gear_img">画像を追加</label>
+                                        <div class="col-lg-6">
+                                            <input 
+                                                id="gear_img"
+                                                type="file" 
+                                                name="gear_img"
+                                            >
+                                            <br><small class="text-dark">画像は任意です。JPEG,PNGのみ対応</small>
+                                        </div>
+                                    </div>
+                                    <div class="text-danger">
+                                        <p>{{ $errors->first('gear_img') }}</p>
+                                    </div>
 
-                        <div class="col-md-8 form-group">
-                        <label for="comment">コメント</label>
-                        <textarea
-                            id="comment"
-                            name="comment" 
-                            class="form-control" 
-                            rows="16" 
-                            placeholder="本文">{{ old('comment') }}</textarea>
-                        </div>
-                        <div class="text-danger">
-                            <p>{{ $errors->first('comment') }}</p>
-                        </div>
+                                    <div class="form-group">
+                                        <label for="comment">コメント</label>
+                                            <textarea
+                                                id="comment"
+                                                name="comment" 
+                                                class="form-control @error('comment') is-invalid @enderror" 
+                                                rows="16" 
+                                                class="col-lg-8"
+                                                placeholder="本文">{{ old('comment') }}</textarea>
+                                        
+                                    </div>
+                                    <div class="text-danger">
+                                        <p>{{ $errors->first('comment') }}</p>
+                                    </div>
+                                </div>
 
-                    <button type="submit" class="btn col-md-8 btn-primary btn-block">投稿する</button>
-                    <a  class="btn btn-secondary col-md-8 btn-block" href="{{ route('camps.index') }}">戻る</a>
-                </form>
+                                <button type="submit" class="btn col-lg-6 btn-success btn-block">投稿する</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <div class="row justify-content-center">
+            <div class="mt-3 col-lg-6">
+                <a  class="btn btn-secondary btn-block" href="{{ route('camps.index') }}">戻る</a>
             </div>
         </div>
     </div>
