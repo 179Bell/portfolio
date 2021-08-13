@@ -9,20 +9,16 @@
                 @method('PUT')
 
             <div class="form-group row">
-                <p class="col-md-12 text-center text-dark">
+                <p class="col-lg-12 text-center text-dark">
                     <span class="text-danger">(※)</span>は入力必須項目です。
                 </p>
             </div>
 
-            <!-- <div class="row justify-content-center mb-3">
-                <img src="/images/human.png">
-            </div> -->
-
             <div class="form-group row">
-                <label for="name" class="col-md-4 col-form-label text-md-right text-dark">
+                <label for="name" class="col-lg-4 col-form-label text-lg-right text-dark">
                     名前<span class="text-danger">(※)</span>
                 </label>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <input 
                         id="name" 
                         type="text" 
@@ -42,30 +38,11 @@
                 </div>
             </div>
 
-            <!-- <div class="form-group row">
-                <label for="avatar" class="col-md-4 col-form-label text-md-right">プロフィール画像</label>
-                <div class="col-md-6">
-                    <input 
-                        id="avatar" 
-                        type="file" 
-                        name="avatar" 
-                        class="@error('avatar') is-invalid @enderror"
-                        accept="image/jpeg, image/png"
-                    >
-                    @error('avatar')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <br><small class="text-dark">サイズは1024Kbyteまで</small>
-                </div>
-            </div> -->
-
             <div class="form-group row">
-                <label for="bike" class="col-md-4 col-form-label text-md-right text-dark">
+                <label for="bike" class="col-lg-4 col-form-label text-lg-right text-dark">
                     愛車<span class="text-danger">(※)</span>
                 </label>
-                <div class="col-md-6">
+                <div class="col-lg-6">
                     <input 
                         id="bike" 
                         type="text" 
@@ -84,18 +61,46 @@
                 </div>
             </div>
 
-            <div class="col-md-5 offset-md-5">
+            <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-primary">
-                    変更する</button>
-                <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <div>
-                        <button type="submit" class="btn btn-danger">退会する</button>
-                    </div>
-                </form>
+                    <i class="fas fa-user-edit"></i>変更する</button>
+                <div class="ml-3">
+                    <a class="btn btn-danger text-white" data-toggle="modal" data-target="#modal-delete-user">
+                        <i class="fas fa-user-alt-slash"></i>退会する</button>
+                    </a>
+                </div>
             </div>
         </form>
     </div>
 
+    <div id="modal-delete-user" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <div class="modal-body">
+                    退会するとすべてのデーターが失われます。よろしいですか？
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
+                    <button type="submit" class="btn btn-danger">退会する</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 @endsection('content')
+
+<!-- <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <div class="ml-2">
+                        <button type="submit" class="btn btn-danger"><i class="fas fa-user-alt-slash"></i>退会する</button>
+                    </div>
+                </form> -->
