@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Gear;
-use App\Camp;
 use App\Http\Requests\UserRequest;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -60,7 +57,7 @@ class UsersController extends Controller
         }
     }
 
-    public function destroy(User $user, Camp $camp)
+    public function destroy(User $user)
     {
         $user->delete();
         return view('welcome');
