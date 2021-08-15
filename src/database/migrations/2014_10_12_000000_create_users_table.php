@@ -20,10 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('bike');
             $table->string('avatar')->default('human.png');
-            $table->unique(['email','deleted_at']);
+            $table->unique('email');
             $table->rememberToken();
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
