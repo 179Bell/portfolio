@@ -2,19 +2,31 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LikesController extends Controller
 {
-    public function store(Request $request, $id)
+    /**
+     * お気に入りの登録
+     * 
+     * @param int $id
+     * @return Illuminate\Http\RedirectResponse
+     */
+    public function store($id)
     {
-        \Auth::user()->like($id);
+        Auth::user()->like($id);
         return back();
     }
 
+    /**
+     * お気に入りの削除
+     * 
+     * @param int $id
+     * @return Illuminate\Http\RedirectResponse
+     */
     public function destroy($id)
     {
-        \Auth::user()->unlike($id);
+        Auth::user()->unlike($id);
         return back();
     }
 }
