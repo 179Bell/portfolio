@@ -4,23 +4,38 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\Camp;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class BookmarksController extends Controller
 {
-    public function store(Request $request, $id)
+    /**
+     * お気に入りの登録
+     * 
+     * @param int $id キャンプのid
+    */
+    public function store($id)
     {
-        \Auth::user()->bookmark($id);
+        Auth::user()->bookmark($id);
         return back();
     }
 
+    /**
+     * お気に入りの削除
+     * 
+     * @param int $id キャンプのid
+     */
     public function destroy($id)
     {
-        \Auth::user()->unbookmark($id);
+        Auth::user()->unbookmark($id);
         return back();
     }
 
+    /**
+     * お気に入りをユーザーページのタブに表示する
+     * 
+     * @param int $id キャンプのid
+     * @return array ユーザー情報、お気に入りがあった場合はその画像
+     */
     public function show($id)
     {
         $user = User::find($id);

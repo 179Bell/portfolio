@@ -2,21 +2,28 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use App\Gear;
-use App\GearImg;
-use Illuminate\Http\Request;
 use App\Http\Requests\GearRequest;
 use Illuminate\Support\Facades\Auth;
 
 class GearsController extends Controller
 {
+    /**
+     * ギアの登録画面を返す
+     */
     public function create()
     {
         return view('gears.create');
     }
 
-    public function store(GearRequest $request, Gear $gear, GearImg $gearImg)
+    /**
+     * ギアの登録
+     * 
+     * @param GearRequest $request
+     * @param Gear $gear
+     * @return Illuminate\Http\RedirectResponse
+     */
+    public function store(GearRequest $request, Gear $gear)
     {
         // ギア情報を保存
         $gear->user_id = Auth::id();
@@ -29,6 +36,13 @@ class GearsController extends Controller
         }
         return redirect()->route('camps.index')->with('flash_message', 'ギアを登録しました');;
     }
+
+    /**
+     * ギアの削除
+     * 
+     * @param Gear $gear
+     * @return Illuminate\Http\RedirectResponse
+     */
 
     public function destroy(Gear $gear)
     {

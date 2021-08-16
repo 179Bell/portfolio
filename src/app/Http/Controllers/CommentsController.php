@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use App\Camp;
-use App\CampImg;
-use Illuminate\Http\Request;
 use App\Http\Requests\CommentRequest;
-use Illuminate\Support\Facades\Auth;
 
 class CommentsController extends Controller
 {
+    /**
+     * コメントの保存
+     * 
+     * @param CommentRequest $request
+     * @param Comment $comment
+     * @return Illuminate\Http\RedirectResponse
+     */
     public function store(CommentRequest $request, Comment $comment)   
     {
         $comment->fill($request->all())->save();
