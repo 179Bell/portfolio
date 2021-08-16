@@ -88,7 +88,7 @@
 
                     <div class="row justify-content-center mt-2">
                     <button type="submit" class="btn col-md-8 btn-success btn-block">変更する</button>
-                    <a  class="btn btn-secondary col-md-8 btn-block" href="{{ route('camps.index') }}">戻る</a>
+                    <a  class="btn btn-secondary col-md-8 btn-block" href="{{ route('top') }}">戻る</a>
                     </div>
                 </form>
             </div>

@@ -83,7 +83,7 @@
                         <button type="submit" class="btn btn-success btn-block col-lg-6">投稿する</button>
                     </div>
                     <div class="row justify-content-center mt-2">
-                        <a class="btn btn-secondary btn-block col-lg-6" href="{{ route('camps.index') }}">戻る</a>
+                        <a class="btn btn-secondary btn-block col-lg-6" href="{{ route('top') }}">戻る</a>
                     </div>
                 </form>
             </div>

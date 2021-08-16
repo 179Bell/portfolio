@@ -67,7 +67,7 @@ class CampsController extends Controller
             $img_path = $request->file('camp_img')->storeAs('public/images', $filename);
             $camp->campImgs()->create(['img_path' => $filename]);
         }
-        return redirect()->route('camps.index')->with('flash_message', '投稿が完了しました');;
+        return redirect()->route('top')->with('flash_message', '投稿が完了しました');;
     }
 
     /**
@@ -100,7 +100,7 @@ class CampsController extends Controller
             $img_path = $request->file('camp_img')->storeAs('public/images', $filename);
             $camp->campImgs()->create(['img_path' => $filename]);
         }
-        return redirect()->route('camps.index')->with('flash_message', '投稿を更新しました');;
+        return redirect()->route('top')->with('flash_message', '投稿を更新しました');;
     }
 
     /**
@@ -112,7 +112,7 @@ class CampsController extends Controller
     public function destroy(Camp $camp)
     {
         $camp->delete();
-        return redirect()->route('camps.index')->with('flash_message', '投稿を削除しました');
+        return redirect()->route('top')->with('flash_message', '投稿を削除しました');
     }
 
     /**

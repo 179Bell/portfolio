@@ -28,7 +28,7 @@ class LoginController extends Controller
      */
     protected function redirectPath()
     {
-        return 'camps';
+        return '/';
     }
 
     /**
