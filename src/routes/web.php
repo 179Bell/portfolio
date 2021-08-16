@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', 'CampsController@index')->name('top');
 
 //認証ルート
 Auth::routes();
@@ -38,7 +37,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users', 'UsersController', ['only' => ['edit', 'update', 'destroy']]);
 });
 //キャンプの一覧と詳細表示
-Route::resource('camps', 'CampsController', ['only' => ['index', 'show']]);
+Route::resource('camps', 'CampsController', ['only' => ['show']]);
 //プロフィールページ
 Route::get('users/{id}/profile', 'UsersController@profile')->name('users.profile');
 Route::get('bookmark/{id}', 'BookmarksController@show')->name('bookmark.show');

@@ -63,7 +63,7 @@
     </div>
 
     <div class="row d-flex justify-content-center mt-4">
-        <a class="btn btn-secondary col-lg-6 btn-block" href="{{ route('camps.index') }}">戻る</a>
+        <a class="btn btn-secondary col-lg-6 btn-block" href="{{ route('top') }}">戻る</a>
     </div>
 
 

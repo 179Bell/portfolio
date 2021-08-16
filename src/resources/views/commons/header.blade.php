@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-light bg-success border">
-    <a class="navbar-brand text-light" href="{{ route('camps.index') }}"><i class="fas fa-campground"></i>ポートフォリオ</a>
+    <a class="navbar-brand text-light" href="{{ route('top') }}"><i class="fas fa-campground"></i>ポートフォリオ</a>
 
     
     <ul class="navbar-nav ml-auto mr-3">
@@ -60,11 +60,6 @@
         @endif
     </ul>
 </nav>
-
-<!-- 
-<button form="logout-button" class="dropdown-item text-danger" type="submit" >
-                    <i class="fas fa-sign-out-alt"></i>ログアウト
-                </button> -->
-                <form id="logout-button" method="POST" action="{{ route('logout') }}">
-                @csrf
+            <form id="logout-button" method="POST" action="{{ route('logout') }}">
+            @csrf
             </form>
