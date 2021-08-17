@@ -148,7 +148,7 @@ return [
     'attributes' => [
         'name' => '名前',
         'email' => 'メールアドレス',
-        'bike' => '車種',
+        'bike' => '愛車',
         'password' => 'パスワード',
         'avatar' => 'プロフィール画像',
         'title'=> 'タイトル',
