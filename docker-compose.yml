@@ -49,10 +49,14 @@ services:
             context: .
             dockerfile: ./docker/mysql/Dockerfile
         ports:
-            - 3000:3306
+            - 4307:3306
         environment:
             MYSQL_DATABASE: ${DB_NAME}
             MYSQL_USER: ${DB_USER}
             MYSQL_PASSWORD: ${DB_PASSWORD}
             MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
             TZ: 'Asia/Tokyo'
+        volumes:
+            - ./docker/db-test/data:/var/lib/mysql
+            - ./docker/db-test/my.cnf:/etc/mysql/conf.d/my.cnf
+            - ./docker/db-test/sql:/docker-entrypoint-initdb.d
