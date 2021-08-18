@@ -13,7 +13,6 @@
 
 
 Route::get('/', 'CampsController@index')->name('top');
-
 //認証ルート
 Auth::routes();
 Route::get('camps/search', 'CampsController@search')->name('camps.search');
