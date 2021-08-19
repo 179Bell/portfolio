@@ -66,6 +66,9 @@ class CampsController extends Controller
             $filename = $request->file('camp_img')->getClientOriginalName();
             $img_path = $request->file('camp_img')->storeAs('public/images', $filename);
             $camp->campImgs()->create(['img_path' => $filename]);
+        } else {
+            $defalut_img = 'noimage.jpg';
+            $camp->campImgs()->create(['img_path' => $defalut_img]);
         }
         return redirect()->route('top')->with('flash_message', '投稿が完了しました');;
     }
