@@ -16,10 +16,6 @@
                                 </p>
                             </div>
 
-                            <!-- <div class="row justify-content-center mb-3">
-                                <img src="/images/human.png">
-                            </div> -->
-
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right text-dark">
                                     名前<span class="text-danger">(※)</span>
