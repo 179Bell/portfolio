@@ -32,7 +32,7 @@
                                         name="name" 
                                         value="{{ old('name') }}" 
                                         autocomplete="name"
-                                        placeholder="名無し名人"
+                                        placeholder="二輪太郎"
                                         autofocus
                                     >
                                     <small class="text-dark">15字以内で入力してください。</small>
