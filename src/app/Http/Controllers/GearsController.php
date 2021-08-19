@@ -33,6 +33,9 @@ class GearsController extends Controller
             $filename = $request->file('gear_img')->getClientOriginalName();
             $img_path = $request->file('gear_img')->storeAs('public/images', $filename);
             $gear->gearImgs()->create(['img_path' => $filename]);
+        } else {
+            $defalut_img = 'noimage.jpg';
+            $gear->gearImgs()->create(['img_path' => $defalut_img]);
         }
         return redirect()->route('top')->with('flash_message', 'ギアを登録しました');;
     }
