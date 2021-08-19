@@ -56,6 +56,9 @@
             <li class="nav-item">
                 <a class="nav-link text-light" href="{{ route('register') }}"><i class="far fa-user"></i>ユーザー登録</a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('guest.login') }}" class="btn btn-outline-light">ゲストログイン</a>
+            </li>
 
         @endif
     </ul>

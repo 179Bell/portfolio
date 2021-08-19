@@ -15,6 +15,7 @@
 Route::get('/', 'CampsController@index')->name('top');
 //認証ルート
 Auth::routes();
+Route::get('guest', 'Auth\LoginController@guestLogin')->name('guest.login');
 Route::get('camps/search', 'CampsController@search')->name('camps.search');
 // 認証済ユーザのみのルーティング
 Route::group(['middleware' => ['auth']], function() {
