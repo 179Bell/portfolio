@@ -1,4 +1,4 @@
-<footer class="mt-5 bg-success mt-5">
+<footer class="bg-success">
     <div class="text-center">
         <p class="text-light p-4">Shingo Suzumura All rights reserved.</p>
     </div>

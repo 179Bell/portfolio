@@ -17,19 +17,21 @@
     @endif
 </head>
 
-<body class="bg-light">
+<body class="bg-light d-flex flex-column" style="min-height: 100vh">
     @include('commons.header')
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                @if (session('flash_message'))
-                    <div class="alert alert-success flash_message mt-2">
-                        {{ session('flash_message') }}
-                    </div>
-                @endif
-                @yield('content')
+    <main class="mb-auto">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    @if (session('flash_message'))
+                        <div class="alert alert-success flash_message mt-2">
+                            {{ session('flash_message') }}
+                        </div>
+                    @endif
+                    @yield('content')
+                </div>
             </div>
         </div>
-    </div>    
-    @include('commons.footer')
+    </main>
+    @include('commons.footer')   
 </body>
