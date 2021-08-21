@@ -85,6 +85,6 @@ class UsersController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return view('top');
+        return route('/');
     }
 }
