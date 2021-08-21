@@ -78,7 +78,7 @@
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
-                                    <br><small class="text-dark">サイズは1024Kbyteまで</small>
+                                    <br><small class="text-dark">画像は任意です。JPEG,PNGのみ</small>
                                 </div>
                             </div>
 
