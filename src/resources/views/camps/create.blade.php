@@ -59,7 +59,7 @@
                                     type="file" 
                                     name="camp_img"
                                 >
-                                <br><small class="text-dark">サイズは1024Kbyteまで</small>
+                                <br><small class="text-dark">画像は任意です。JPEG,PNGのみ。投稿は一枚のみです。</small>
                             </div>
                         </div>
                         <div class="text-danger">
