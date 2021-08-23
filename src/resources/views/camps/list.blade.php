@@ -25,7 +25,7 @@
                                     <div class="row no-gutters">
                                         <div class="col-lg-5 my-auto">
                                             @foreach($camp->campImgs as $campImg)
-                                                <img src="{{ asset('storage/images/'.$campImg->img_path) }}" width="300" height="200" >
+                                                <img src="{{ asset('https://shingoportfolio.s3.ap-northeast-1.amazonaws.com/'.$campImg->img_path) }}" width="300" height="200" >
                                             @endforeach
                                         </div>
                                         <div class="card-body col-lg-7">

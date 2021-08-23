@@ -8,7 +8,7 @@
 
             <div class="row">
                 <div class="col-lg-5 d-flex justify-content-end">
-                    <img src="{{ asset('storage/images/'.$user->avatar )}}" class="rounded-circle border border-black" height="300" width="300">
+                    <img src="{{ asset('https://shingoportfolio.s3.ap-northeast-1.amazonaws.com/'.$user->avatar )}}" class="rounded-circle border border-black" height="300" width="300">
                 </div>
                 
                 <div class="col-lg-7 d-flex justify-content-center align-items-center">
