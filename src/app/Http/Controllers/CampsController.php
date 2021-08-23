@@ -7,6 +7,7 @@ use App\Http\Requests\CampRequest;
 use App\Camp;
 use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class CampsController extends Controller
 {
@@ -63,11 +64,15 @@ class CampsController extends Controller
         $camp->fill($request->all())->save();
         //画像のパスを取得、保存
         if ($request->hasFile('camp_img')) {
-            $filename = $request->file('camp_img')->getClientOriginalName();
-            $img_path = $request->file('camp_img')->storeAs('public/images', $filename);
-            $camp->campImgs()->create(['img_path' => $filename]);
+            //画像があった場合、リクエストから画像を取得
+            $camp_img = $request->file('camp_img');
+            // S3に保存
+            $url = Storage::disk('s3')->putFile('portfolio', $camp_img, 'public');
+            // DBにURLを保存
+            $camp->campImgs()->create(['img_path' => $url]);
         } else {
-            $defalut_img = 'noimage.jpg';
+            //リクエストに画像がない場合はデフォルト画像を保存する。
+            $defalut_img = 'portfolio/noimage2.jpg';
             $camp->campImgs()->create(['img_path' => $defalut_img]);
         }
         return redirect()->route('top')->with('flash_message', '投稿が完了しました');;
@@ -99,9 +104,12 @@ class CampsController extends Controller
         $camp->fill($request->all())->save();
         //画像が更新されているか確認、更新
         if ($request->hasFile('camp_img')) {
-            $filename = $request->file('camp_img')->getClientOriginalName();
-            $img_path = $request->file('camp_img')->storeAs('public/images', $filename);
-            $camp->campImgs()->create(['img_path' => $filename]);
+            $camp_img = $request->file('camp_img');
+            $url = Storage::disk('s3')->putFile('portfolio', $camp_img, 'public');
+            $camp->campImgs()->create(['img_path' => $url]);
+        } else {
+            $defalut_img = 'portfolio/noimage2.jpg';
+            $camp->campImgs()->create(['img_path' => $defalut_img]);
         }
         return redirect()->route('top')->with('flash_message', '投稿を更新しました');;
     }
@@ -114,7 +122,20 @@ class CampsController extends Controller
      */
     public function destroy(Camp $camp)
     {
-        $camp->delete();
+        // campimgsテーブルからパスを取得
+        $camp_imgs = Camp::find($camp->id)->campImgs;
+        foreach ($camp_imgs as $key => $value) {
+            $url = $value->img_path;
+        }
+        // S3から画像を削除
+        if ($url != 'portfolio/noimage2.jpg') {
+            $s3_delete = Storage::disk('s3')->delete($url);
+            $camp->delete();
+        } else {
+        // デフォルト画像であればDBのみ削除
+            $camp->delete();
+        }
+        
         return redirect()->route('top')->with('flash_message', '投稿を削除しました');
     }
 

@@ -11,7 +11,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" 
                     aria-haspopup="true" aria-expanded="false">
-                    <img src="{{ asset('storage/images/'.Auth::user()->avatar) }}" class="rounded-circle border border-white" width="50" height="50">
+                    <img src="{{ asset('https://shingoportfolio.s3.ap-northeast-1.amazonaws.com/'.Auth::user()->avatar) }}" class="rounded-circle border border-white" width="50" height="50">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" type="button" href="{{ route('users.profile', ['id' => Auth::id()]) }}">

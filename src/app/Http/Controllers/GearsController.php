@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Gear;
 use App\Http\Requests\GearRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class GearsController extends Controller
 {
@@ -30,11 +31,11 @@ class GearsController extends Controller
         $gear->fill($request->all())->save();
         //画像のパスを取得、保存
         if ($request->hasFile('gear_img')) {
-            $filename = $request->file('gear_img')->getClientOriginalName();
-            $img_path = $request->file('gear_img')->storeAs('public/images', $filename);
-            $gear->gearImgs()->create(['img_path' => $filename]);
+            $gear_img = $request->file('gear_img');
+            $path = Storage::disk('s3')->putFile('portfolio', $gear_img, 'public');
+            $gear->gearImgs()->create(['img_path' => $path]);
         } else {
-            $defalut_img = 'noimage.jpg';
+            $defalut_img = 'portfolio/noimage2.jpg';
             $gear->gearImgs()->create(['img_path' => $defalut_img]);
         }
         return redirect()->route('top')->with('flash_message', 'ギアを登録しました');;
@@ -49,6 +50,11 @@ class GearsController extends Controller
 
     public function destroy(Gear $gear)
     {
+        $gear_imgs = Gear::find($gear->id)->gearImgs;
+        foreach ($gear_imgs as $key => $value) {
+            $url = $value->img_path;
+        }
+        $s3_delete = Storage::disk('s3')->delete($url);
         $gear->delete();
         return redirect()->route('top')->with('flash_message', 'ギアを削除しました');;
     }

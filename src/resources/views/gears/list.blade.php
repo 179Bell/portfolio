@@ -23,7 +23,7 @@
                             <div class="row no-gutters">
                                 <div class="col-lg-5 my-auto">
                                     @foreach($gear->gearImgs as $gearImg)
-                                    <img src="{{ asset('storage/images/'.$gearImg->img_path) }}" width="300" height="200" >
+                                    <img src="{{ asset('https://shingoportfolio.s3.ap-northeast-1.amazonaws.com/'.$gearImg->img_path) }}" width="300" height="200" >
                                     @endforeach
                                 </div>
                                 <div class="card-body col-lg-7">
