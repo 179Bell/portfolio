@@ -72,7 +72,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         // アバター画像の有無
-        if (in_array('avatar', $data)) {
+        if (array_key_exists('avatar', $data)) {
             // リクエストから画像を取得
             $image = request()->file('avatar');
             // S3に保存
