@@ -5,12 +5,16 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Gear;
 use App\Http\Requests\UserRequest;
+use App\Services\UserService;
 
 class UsersController extends Controller
 {
-    public function __construct()
+    protected $userService;
+
+    public function __construct(UserService $userService)
     {
         $this->authorizeResource(User::class, 'user');
+        $this->userService = $userService;
     }
 
     /**
@@ -21,22 +25,9 @@ class UsersController extends Controller
      */
     public function profile($id)
     {
-        $user = new User;
-        $user = User::find($id);
-        //ユーザーの持つギアの取得
-        $gears = $user->gears()->get();
-        //ユーザーがギアを持つかどうか確認
-        if ($gears->isEmpty()) {
-            return view('users.profile', compact('user', 'gears'));
-        } else {
-        //コレクションからidを取得
-            foreach ($gears as $key => $value) {
-                $gear_id = $value->id;
-            }
-        //ギア画像の取得、viewに返す
-            $gearImgs = Gear::with('gearImgs')->find($gear_id);
-            return view('users.profile', compact('user', 'gears', 'gearImgs'));
-        }
+        list($user, $gears) = $this->userService->profile($id);
+        $gearImgs = $this->userService->profile($id);
+        return view('users.profile', compact('user', 'gears', 'gearImgs'));
     }
 
     /**
@@ -59,21 +50,10 @@ class UsersController extends Controller
      */
     public function update(UserRequest $request, User $user)
     {
-        $user->fill($request->all())->save();
-        //ユーザーの持つギアの取得
-        $gears = $user->gears()->get();
-        //ユーザーがギアを持つかどうか確認
-        if ($gears->isEmpty()) {
-            return view('users.profile', compact('user', 'gears'));
-        } else {
-            //コレクションからidを取得
-            foreach ($gears as $key => $value) {
-                $gear_id = $value->id;
-            }
-            //ギア画像の取得、viewに返す
-            $gearImgs = Gear::with('gearImgs')->find($gear_id);
-            return view('users.profile', compact('user', 'gears', 'gearImgs'));
-        }
+        list($user, $gears) = $this->userService->update($request, $user);
+        $gearImgs = $this->userService->update($request, $user);
+        return view('users.profile', compact('user', 'gears', 'gearImgs'));
+        
     }
 
     /**
@@ -84,7 +64,7 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
+        $this->userService->destroy($user);
         return redirect('/');
     }
 }

@@ -106,13 +106,14 @@ final class CampService
         if ($camps->isEmpty()) {
             return [$user, $camps];
         } else {
+            return [$user, $camps];
             //コレクションからidを取得
             foreach ($camps as $key => $value) {
                 $camp_id = $value->id;
             }
             //キャンプ画像の取得
             $campImgs = Camp::with('campImgs')->find($camp_id);
-            return [$user, $camps, $campImgs];
+            return $campImgs;
         }
     }
 

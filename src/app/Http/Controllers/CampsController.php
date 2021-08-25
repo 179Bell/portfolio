@@ -108,7 +108,8 @@ class CampsController extends Controller
      */
     public function camp_list($id)
     {
-        list($user, $camps, $campImgs) = $this->campService->camp_list($id);
+        list($user, $camps) = $this->campService->camp_list($id);
+        $campImgs = $this->campService->camp_list($id);
         return view('camps.list', compact('user', 'camps', 'campImgs'));
     }
 
