@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Camp;
 use App\Http\Requests\CommentRequest;
+use App\Services\CommentService;
 
 class CommentsController extends Controller
 {
+    protected $commentService;
+
+    public function __construct(CommentService $commentService)
+    {
+        $this->commentService = $commentService;
+    }
     /**
      * コメントの保存
      * 
@@ -17,9 +24,7 @@ class CommentsController extends Controller
      */
     public function store(CommentRequest $request, Comment $comment)   
     {
-        $comment->fill($request->all())->save();
-        $camp = Camp::find($request->camp_id);
-        $campImgs = Camp::with('campImgs')->get();
+        list($camp, $campImgs) = $this->commentService->store($request, $comment);
         return redirect()->route('camps.show', compact('camp', 'campImgs'))->with('flash_message', 'コメントを投稿しました');
     }
 }
