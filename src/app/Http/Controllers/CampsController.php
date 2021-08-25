@@ -5,15 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\CampRequest;
 use App\Camp;
-use App\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use App\Services\CampService;
 
 class CampsController extends Controller
 {
-    public function __construct()
+    protected $campService;
+
+    public function __construct(CampService $campService)
     {
         $this->authorizeResource(Camp::class, 'camp');
+        $this->campService = $campService;
     }
 
     /**
@@ -23,8 +24,7 @@ class CampsController extends Controller
      */
     public function index()
     {
-        //N+1問題対策
-        $camps = Camp::with('user', 'campImgs')->orderBy('id', 'desc')->paginate(10);
+        $camps = $this->campService->index();
         return view('camps.index', compact('camps'));
     }
 
@@ -36,7 +36,7 @@ class CampsController extends Controller
      */
     public function show(Camp $camp)
     {
-        $campImgs = Camp::with('campImgs')->get();
+        $campImgs = $this->campService->show();
         return view('camps.show', compact('camp', 'campImgs'));
     }
 
@@ -59,22 +59,7 @@ class CampsController extends Controller
      */
     public function store(CampRequest $request, Camp $camp)
     {
-        // キャンプ情報を保存
-        $camp->user_id = Auth::id();
-        $camp->fill($request->all())->save();
-        //画像のパスを取得、保存
-        if ($request->hasFile('camp_img')) {
-            //画像があった場合、リクエストから画像を取得
-            $camp_img = $request->file('camp_img');
-            // S3に保存
-            $url = Storage::disk('s3')->putFile('portfolio', $camp_img, 'public');
-            // DBにURLを保存
-            $camp->campImgs()->create(['img_path' => $url]);
-        } else {
-            //リクエストに画像がない場合はデフォルト画像を保存する。
-            $defalut_img = 'portfolio/noimage2.jpg';
-            $camp->campImgs()->create(['img_path' => $defalut_img]);
-        }
+        $this->campService->store($request, $camp);
         return redirect()->route('top')->with('flash_message', '投稿が完了しました');;
     }
 
@@ -86,8 +71,7 @@ class CampsController extends Controller
      */
     public function edit(Camp $camp)
     {
-        //画像を取得
-        $campImgs = Camp::with('campImgs')->get();
+        $campImgs = $this->campService->edit();
         return view('camps.edit', compact('camp', 'campImgs'));
     }
 
@@ -100,17 +84,7 @@ class CampsController extends Controller
      */
     public function update(CampRequest $request, Camp $camp)
     {
-        // キャンプ情報を更新
-        $camp->fill($request->all())->save();
-        //画像が更新されているか確認、更新
-        if ($request->hasFile('camp_img')) {
-            $camp_img = $request->file('camp_img');
-            $url = Storage::disk('s3')->putFile('portfolio', $camp_img, 'public');
-            $camp->campImgs()->create(['img_path' => $url]);
-        } else {
-            $defalut_img = 'portfolio/noimage2.jpg';
-            $camp->campImgs()->create(['img_path' => $defalut_img]);
-        }
+        $this->campService->update($request, $camp);
         return redirect()->route('top')->with('flash_message', '投稿を更新しました');;
     }
 
@@ -122,20 +96,7 @@ class CampsController extends Controller
      */
     public function destroy(Camp $camp)
     {
-        // campimgsテーブルからパスを取得
-        $camp_imgs = Camp::find($camp->id)->campImgs;
-        foreach ($camp_imgs as $key => $value) {
-            $url = $value->img_path;
-        }
-        // S3から画像を削除
-        if ($url != 'portfolio/noimage2.jpg') {
-            $s3_delete = Storage::disk('s3')->delete($url);
-            $camp->delete();
-        } else {
-        // デフォルト画像であればDBのみ削除
-            $camp->delete();
-        }
-        
+        $this->campService->destroy($camp);
         return redirect()->route('top')->with('flash_message', '投稿を削除しました');
     }
 
@@ -147,19 +108,7 @@ class CampsController extends Controller
      */
     public function camp_list($id)
     {
-        $user = User::find($id);
-        // キャンプ情報を取得
-        $camps = $user->camps()->get();
-        if ($camps->isEmpty()) {
-            return view('camps.list', compact('user', 'camps'));
-        } else {
-            //コレクションからidを取得
-            foreach ($camps as $key => $value) {
-                $camp_id = $value->id;
-            }
-        }
-        //キャンプ画像の取得
-        $campImgs = Camp::with('campImgs')->find($camp_id);
+        list($user, $camps, $campImgs) = $this->campService->camp_list($id);
         return view('camps.list', compact('user', 'camps', 'campImgs'));
     }
 
@@ -170,31 +119,8 @@ class CampsController extends Controller
      * @return Illuminate\Contracts\View\Factory
      */
     public function search(Request $request){
-        //requestから検索ワードを受け取る
-        $keyword = $request->keyword;
-        
-        $query = Camp::query();
-        // キャンプを検索
-        if (!empty($keyword)) {
-            $query->where('location', 'like', '%'.$keyword.'%');
-        } else {
-            $message = '検索結果はありませんでした';
-            return view('camps.result', compact('message'));
-        }
-        // クエリから検索結果を取得
-        $data = $query->get();
-        if ($data->isEmpty()) {
-            $message = '検索結果はありませんでした';
-            return view('camps.result', compact('message'));
-        } else {
-            // 取得したクエリからidを取得しユーザー情報と画像を取得
-            foreach ($data as $key => $value) {
-            $camp_id = $value->id;
-            $user_id = $value->user_id;
-            $user = User::find($user_id);
-            $campImgs = Camp::with('campImgs')->find($camp_id);
-        }
-        return view('camps.result', compact('data', 'user', 'campImgs'));
-        }
+        $message = $this->campService->search($request);
+        list($data, $user, $campImgs) = $this->campService->search($request);
+        return view('camps.result', compact('data', 'user', 'campImgs', 'message'));
     }
 }
