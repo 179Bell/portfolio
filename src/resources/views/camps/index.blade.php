@@ -26,4 +26,9 @@
         </div>       
     @endforeach
 
+    <div class="col-lg-6 mx-auto d-flex justify-content-center mt-3">
+        {{ $camps->links() }}
+    </div>
+
+
 @endsection('content')
