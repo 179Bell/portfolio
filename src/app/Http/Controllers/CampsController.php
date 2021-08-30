@@ -24,7 +24,8 @@ class CampsController extends Controller
      */
     public function index()
     {
-        $camps = $this->campService->index();
+        //N+1問題対策
+        $camps = Camp::with('user', 'campImgs')->orderBy('id', 'desc')->paginate(5);
         return view('camps.index', compact('camps'));
     }
 

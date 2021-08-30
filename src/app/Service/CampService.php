@@ -19,7 +19,7 @@ final class CampService
     public function index()
     {
          //N+1問題対策
-        $camps = Camp::with('user', 'campImgs')->orderBy('id', 'desc')->paginate(10);
+        $camps = Camp::with('user', 'campImgs')->orderBy('id', 'desc')->paginate(3);
         return $camps;
     }
 
