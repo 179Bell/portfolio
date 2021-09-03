@@ -1,10 +1,10 @@
 <nav class="navbar navbar-expand navbar-light bg-success border">
-    <a class="navbar-brand text-light" href="{{ route('top') }}"><i class="fas fa-campground"></i>ポートフォリオ</a>
+    <a class="navbar-brand text-white" href="{{ route('top') }}"><i class="fas fa-campground"></i>ポートフォリオ</a>
 
     
     <ul class="navbar-nav ml-auto mr-3">
         @if (Auth::check())
-            <li class="nav-item mt-3 mr-2">
+            <li class="nav-item mt-1 mr-2">
             <a href="{{ route('camps.create') }}" class="btn btn-outline-light"><i class="fas fa-map-signs"></i>キャンプを投稿する</a>
             </li>
             <!-- ドロップダウンリスト -->
