@@ -5,7 +5,7 @@
     <ul class="navbar-nav ml-auto mr-3">
         @if (Auth::check())
             <li class="nav-item mt-1 mr-2">
-            <a href="{{ route('camps.create') }}" class="btn btn-outline-light"><i class="fas fa-map-signs"></i>キャンプを投稿する</a>
+            <a href="{{ route('camps.create') }}" class="btn btn-outline-white"><i class="fas fa-map-signs"></i>キャンプを投稿する</a>
             </li>
             <!-- ドロップダウンリスト -->
             <li class="nav-item dropdown">
