@@ -27,7 +27,7 @@
     @endif
 </head>
 
-<body class="bg-light d-flex flex-column" style="min-height: 100vh">
+<body class="bg-white d-flex flex-column" style="min-height: 100vh">
     @include('commons.header')
     <main class="mb-auto">
         <div class="container">

@@ -20,18 +20,26 @@ final class GearService
             $path = Storage::disk('s3')->putFile('portfolio', $gear_img, 'public');
             $gear->gearImgs()->create(['img_path' => $path]);
         } else {
-            $defalut_img = 'portfolio/noimage2.jpg';
+            // リクエストが画像を持たない場合
+            $defalut_img = 'portfolio/noimage.jpg';
             $gear->gearImgs()->create(['img_path' => $defalut_img]);
         }
     }
 
     public function destroy(Gear $gear)
     {
+        // campimgsテーブルからパスを取得
         $gear_imgs = Gear::find($gear->id)->gearImgs;
-        foreach ($gear_imgs as $key => $value) {
-            $url = $value->img_path;
+        foreach ($gear_imgs as $gear_img) {
+            $url = $gear_img->img_path;
         }
-        $s3_delete = Storage::disk('s3')->delete($url);
-        $gear->delete();
+        // S3から画像を削除
+        if ($url != 'portfolio/noimage.jpg') {
+            $s3_delete = Storage::disk('s3')->delete($url);
+            $gear->delete();
+        } else {
+        // デフォルト画像であればDBのみ削除
+            $gear->delete();
+        }   
     }
 }

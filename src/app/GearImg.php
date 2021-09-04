@@ -10,7 +10,7 @@ class GearImg extends Model
         'img_path',
     ];
 
-    public function camp()
+    public function gear()
     {
         return $this->belongsTo(Camp::class);
     }

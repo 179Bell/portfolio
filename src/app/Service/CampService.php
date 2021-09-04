@@ -85,8 +85,8 @@ final class CampService
     {
         // campimgsテーブルからパスを取得
         $camp_imgs = Camp::find($camp->id)->campImgs;
-        foreach ($camp_imgs as $key => $value) {
-            $url = $value->img_path;
+        foreach ($camp_imgs as $camp_img) {
+            $url = $camp_img->img_path;
         }
         // S3から画像を削除
         if ($url != 'portfolio/noimage2.jpg') {
