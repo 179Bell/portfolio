@@ -14,11 +14,11 @@
                     <img src="{{ asset('https://shingoportfolio.s3.ap-northeast-1.amazonaws.com/'.Auth::user()->avatar) }}" class="rounded-circle border border-white" width="50" height="50">
                 </a>
                 <div class="dropdown-menu dropdown-menu-right dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" type="button" href="{{ route('users.profile', ['id' => Auth::id()]) }}">
+                <a class="dropdown-item text-center" type="button" href="{{ route('users.profile', ['id' => Auth::id()]) }}">
                     <i class="far fa-user"></i>マイページ
                 </a>
                 <div class="dropdown-divider"></div>
-                    <a class="dropdown-item text-danger" data-toggle="modal" data-target="#modal-logout">
+                    <a class="dropdown-item text-danger text-center" data-toggle="modal" data-target="#modal-logout">
                     <i class="fas fa-sign-out-alt"></i>ログアウト
                     </a>
                 </div>
@@ -50,14 +50,14 @@
 
         @else
 
-            <li class="nav-item">
-                <a class="nav-link text-light" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>ログイン</a>
+            <li class="nav-item mt-2">
+                <a class="nav-link text-white" href="{{ route('login') }}"><i class="fas fa-sign-in-alt"></i>ログイン</a>
+            </li>
+            <li class="nav-item mt-2">
+                <a class="nav-link text-white" href="{{ route('register') }}"><i class="far fa-user"></i>ユーザー登録</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" href="{{ route('register') }}"><i class="far fa-user"></i>ユーザー登録</a>
-            </li>
-            <li class="nav-item">
-                <a href="{{ route('guest.login') }}" class="btn btn-outline-light">ゲストログイン</a>
+                <a href="{{ route('guest.login') }}" class="btn btn-outline-white">ゲストログイン</a>
             </li>
 
         @endif
