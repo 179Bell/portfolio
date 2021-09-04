@@ -34,7 +34,20 @@ class GearsController extends Controller
      */
     public function store(GearRequest $request, Gear $gear)
     {
-        $this->gearService->store($request, $gear);
+        // ギア情報を保存
+        $gear->user_id = Auth::id();
+        $gear->fill($request->all())->save();
+        //画像のパスを取得、保存
+        if ($request->hasFile('gear_img')) {
+            $gear_img = $request->file('gear_img');
+            $path = Storage::disk('s3')->putFile('portfolio', $gear_img, 'public');
+            $gear->gearImgs()->create(['img_path' => $path]);
+        } else {
+            // リクエストが画像を持たない場合
+            $defalut_img = 'portfolio/noimage2.jpg';
+            $gear->gearImgs()->create(['img_path' => $defalut_img]);
+        }
+        // $this->gearService->store($request, $gear);
         return redirect()->route('top')->with('flash_message', 'ギアを登録しました');;
     }
 
@@ -47,7 +60,20 @@ class GearsController extends Controller
 
     public function destroy(Gear $gear)
     {
-        $this->gearService->destroy($gear);
+        // gearimgsテーブルからパスを取得
+        $gear_imgs = Gear::find($gear->id)->gearImgs;
+        foreach ($gear_imgs as $gear_img) {
+            $url = $gear_img->img_path;
+        }
+        // S3から画像を削除
+        if ($url != 'portfolio/noimage2.jpg') {
+            $s3_delete = Storage::disk('s3')->delete($url);
+            $gear->delete();
+        } else {
+        // デフォルト画像であればDBのみ削除
+            $gear->delete();
+        } 
+        // $this->gearService->destroy($gear);
         return redirect()->route('top')->with('flash_message', 'ギアを削除しました');;
     }
 }
