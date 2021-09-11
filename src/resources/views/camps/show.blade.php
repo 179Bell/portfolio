@@ -2,7 +2,45 @@
 
 @section('content')
     <div class="card mt-3">
-        @include('commons.card')
+        <!-- カードヘッダー -->
+        <div class="card-header">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="d-flex flex-row align-items-center">
+                            <a href="{{ route('users.profile', ['id' => $camp->user->id]) }}">
+                                <img src="{{ asset('https://shingoportfolio.s3.ap-northeast-1.amazonaws.com/'.$camp->user->avatar) }}" class="rounded-circle border" width="70" height="70">
+                            </a>
+                            <h4 class="font-weight-bold ml-2">{{ $camp->user->name }}</h4>
+                            <p class="text-right font-weight-lighter ml-2">{{ $camp->created_at->format('Y/m/d H:i') }}</p>
+                        </div>
+                    </div>
+                        @if (Auth::id() == $camp->user->id)
+                            @include('commons.dropdown')
+                        @endif
+                </div>
+            </div>
+        </div>
+        <!--カードヘッダー-->
+        <!-- カードボディー -->
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-12">
+                    @foreach ($camp->campImgs as $campImg)
+                        <img src="{{ asset('https://shingoportfolio.s3.ap-northeast-1.amazonaws.com/'.$campImg->img_path) }}" class="d-block mx-auto" width="400" height="300">
+                    @endforeach
+                </div>
+            </div>
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-10">
+                    <h2 class="mt-4">{{ $camp->title }}</h2>
+                    <p style="font-size: 18px;"><i class="fas fa-map-marker-alt"></i>{{ $camp->location }}</p>
+                    <p>{{ $camp->date }}</p>
+                    <p>{{ $camp->discription }}</p>
+                    @include('commons.button')
+                </div>
+            </div>
+        </div>
 
         @if(Auth::check())
         @include('commons.button')
@@ -32,9 +70,9 @@
                                     <p>{{ $errors->first('comment') }}</p>
                                 </div>
 
-                                <div class="mt-4">
-                                    <button type="submit" class="btn btn-primary">
-                                    コメントする
+                                <div class="mt-4 text-center">
+                                    <button type="submit" class="col-lg-6 btn aqua-gradient">
+                                    <i class="fas fa-pen mr-1"></i>コメントする
                                     </button>
                                 </div>
                             </form>
@@ -63,7 +101,7 @@
     </div>
 
     <div class="row d-flex justify-content-center mt-4">
-        <a class="btn btn-secondary col-lg-6 btn-block" href="{{ route('top') }}">戻る</a>
+        <a class="btn btn-blue-grey col-lg-6 btn-block" href="{{ route('top') }}"><i class="fas fa-angle-double-left"></i>戻る</a>
     </div>
 
 

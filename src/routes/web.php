@@ -11,8 +11,10 @@
 |
 */
 
-
-Route::get('/', 'CampsController@index')->name('top');
+Route::get('/', function(){
+    return view('welcome');
+});
+Route::get('camps', 'CampsController@index')->name('top');
 //認証ルート
 Auth::routes();
 Route::get('guest', 'Auth\LoginController@guestLogin')->name('guest.login');

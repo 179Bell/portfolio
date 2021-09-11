@@ -59,7 +59,7 @@
                                     type="file" 
                                     name="camp_img"
                                 >
-                                <br><small class="text-dark">画像は任意です。JPEG,PNGのみ。投稿は一枚のみです。</small>
+                                <br><small class="text-right">画像は任意です。JPEG,PNGのみ。投稿は一枚のみです。</small>
                             </div>
                         </div>
                         <div class="text-danger">
@@ -80,10 +80,10 @@
                         </div>
 
                     <div class="row justify-content-center">
-                        <button type="submit" class="btn btn-success btn-block col-lg-6">投稿する</button>
+                        <button type="submit" class="btn aqua-gradient btn-block col-lg-6">投稿する</button>
                     </div>
                     <div class="row justify-content-center mt-2">
-                        <a class="btn btn-secondary btn-block col-lg-6" href="{{ route('top') }}">戻る</a>
+                        <a class="btn btn-blue-grey btn-block col-lg-6" href="{{ route('top') }}"><i class="fas fa-angle-double-left"></i>戻る</a>
                     </div>
                 </form>
             </div>

@@ -18,7 +18,7 @@
     @endisset
     
     <div class="row d-flex justify-content-center mt-5">
-        <a href="{{ route('top') }}" class="btn btn-secondary col-lg-6 btn-block">戻る</a>
+        <a href="{{ route('top') }}" class="btn btn-blue-grey col-lg-6 btn-block"><i class="fas fa-angle-double-left"></i>戻る</a>
     </div>
         
 
