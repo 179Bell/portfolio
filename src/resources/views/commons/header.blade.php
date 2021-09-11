@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-light bg-success border">
+<nav class="navbar navbar-expand navbar-light bg-default border">
     <a class="navbar-brand text-white" href="{{ route('top') }}"><i class="fas fa-campground"></i>ポートフォリオ</a>
 
     
@@ -57,7 +57,7 @@
                 <a class="nav-link text-white" href="{{ route('register') }}"><i class="far fa-user"></i>ユーザー登録</a>
             </li>
             <li class="nav-item">
-                <a href="{{ route('guest.login') }}" class="btn btn-outline-white">ゲストログイン</a>
+                <a href="{{ route('guest.login') }}" class="btn btn-warning" style="font-size: 16px;">ゲストログイン</a>
             </li>
 
         @endif

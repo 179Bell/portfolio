@@ -30,7 +30,7 @@
     @endif
 </head>
 
-<nav class="navbar navbar-expand navbar-light bg-success border">
+<nav class="navbar navbar-expand navbar-light bg-default border">
     <p class="navbar-brand text-white mt-2"><i class="fas fa-campground"></i>ポートフォリオ</p>
 </nav>
 
