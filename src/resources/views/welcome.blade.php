@@ -42,14 +42,14 @@
                         <img src="{{ asset('https://shingoportfolio.s3.ap-northeast-1.amazonaws.com/portfolio/IMG_1794.jpeg') }}" height="380px" > 
                         <div class="card-img-overlay">
                             <h1 class="text-white">さあ思い出を共有しよう</h1>
-                            <div class="btn btn-primary">
+                            <div class="btn peach-gradient">
                                 <a class="text-white" href="{{ route('guest.login') }}">ゲストログイン</a>
                             </div>
-                            <div class="btn btn-primary">
+                            <div class="btn btn-default">
                                 <a class="text-white" href="{{ route('login') }}">ログイン</a>
                             </div>
-                            <div class="btn btn-success">
-                                <a class="text-white" href="{{ route('register') }}">ユーザー登録はこちらから</a>
+                            <div class="btn btn-default">
+                                <a class="text-white" href="{{ route('register') }}">ユーザー登録</a>
                             </div>
                         </div>
                     </div>
@@ -82,13 +82,13 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-10">
                         <h1>さあはじめよう！</h1>
-                        <div class="btn btn-primary">
+                        <div class="btn peach-gradient">
                             <a class="text-white" href="{{ route('guest.login') }}">ゲストログイン</a>
                         </div>
-                        <div class="btn btn-primary">
+                        <div class="btn btn-default">
                             <a class="text-white" href="{{ route('login') }}">ログイン</a>
                         </div>
-                        <div class="btn btn-success">
+                        <div class="btn btn-default">
                             <a class="text-white" href="{{ route('register') }}">ユーザー登録はこちらから</a>
                         </div>
                     </div>

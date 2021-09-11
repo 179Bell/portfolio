@@ -32,7 +32,7 @@
                         </div>
 
                         <div class="form-group row justify-content-center mb-3">
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" class="btn aqua-gradient">
                                 ログイン
                             </button>
                         </div>

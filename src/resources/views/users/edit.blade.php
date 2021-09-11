@@ -1,15 +1,17 @@
 @extends('layouts.view')
 
 @section('content')
-
-    <div class="font-weight-bold text-center border-bottom pb-3 pt-3 mt-4" style="font-size: 24px">ユーザー情報編集</div>
+    <div class="card  mt-4">
+        <div class="card-header">
+            <h3 class="text-center">ユーザー情報編集</h3>
+        </div>
 
         <form method="POST" action="{{ route('users.update', ['user' => $user]) }}" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
 
             <div class="form-group row">
-                <p class="col-lg-12 text-center text-dark">
+                <p class="col-lg-12 text-center text-dark mt-2">
                     <span class="text-danger">(※)</span>は入力必須項目です。
                 </p>
             </div>
@@ -61,8 +63,8 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-center">
-                <button type="submit" class="btn btn-primary">
+            <div class="d-flex justify-content-center mb-3">
+                <button type="submit" class="btn aqua-gradient">
                     <i class="fas fa-user-edit"></i>変更する</button>
                 <div class="ml-3">
                     <a class="btn btn-danger text-white" data-toggle="modal" data-target="#modal-delete-user">
@@ -72,35 +74,27 @@
             </div>
         </form>
     </div>
-
+    <!-- モーダル -->
     <div id="modal-delete-user" class="modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <div class="modal-body">
-                    退会するとすべてのデーターが失われます。よろしいですか？
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="閉じる">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="modal-footer justify-content-between">
-                    <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
-                    <button type="submit" class="btn btn-danger">退会する</button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>
-@endsection('content')
-
-<!-- <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST">
+                <form action="{{ route('users.destroy', ['user' => $user]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <div class="ml-2">
-                        <button type="submit" class="btn btn-danger"><i class="fas fa-user-alt-slash"></i>退会する</button>
+                    <div class="modal-body">
+                        退会するとすべてのデータが失われます。よろしいですか？
                     </div>
-                </form> -->
+                    <div class="modal-footer justify-content-between">
+                        <a class="btn btn-outline-grey" data-dismiss="modal">キャンセル</a>
+                        <button type="submit" class="btn btn-danger">退会する</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection('content')

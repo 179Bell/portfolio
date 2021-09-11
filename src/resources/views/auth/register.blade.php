@@ -147,7 +147,7 @@
                             </div>
 
                             <div class="col-md-5 offset-md-5 mb-5">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn aqua-gradient">
                                     登録</button>
                             </div>
 
