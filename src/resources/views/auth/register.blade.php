@@ -4,14 +4,16 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div>
-                    <div class="font-weight-bold text-center border-bottom pb-3 pt-3 mt-4" style="font-size: 24px">ユーザー登録</div>
+                <div class="card  mt-4">
+                    <div class="card-header font-weight-bold text-center border-bottom pb-3 pt-3" style="font-size: 24px">ユーザー登録</div>
 
                         <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                                 @csrf
-
+                        <div>
+                            
+                        </div>
                             <div class="form-group row">
-                                <p class="col-md-12 text-center text-dark">
+                                <p class="col-md-12 text-center text-dark mt-2">
                                     <span class="text-danger">(※)</span>は入力必須項目です。
                                 </p>
                             </div>
@@ -144,7 +146,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-5 offset-md-5">
+                            <div class="col-md-5 offset-md-5 mb-5">
                                 <button type="submit" class="btn btn-primary">
                                     登録</button>
                             </div>
