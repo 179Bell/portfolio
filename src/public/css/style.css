@@ -1,6 +1,20 @@
 .card-img-overlay{
     padding: 0;
-    top: calc(30% - 0.5rem);
+    top: calc(27% - 0.5rem);
     text-align: center;
     font-weight: bold;
+    position: absolute;
+    left: 57%;
+    height: 200px;
+    width: 580px;
+    background-color: rgba(255, 255, 255,0.5);
     }
+
+body{
+    font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro", "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "メイリオ", sans-serif;
+}
+
+.app-example{
+    background-color: #2bbbad;
+}
+
