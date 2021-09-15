@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand navbar-light bg-default border">
+<nav class="navbar navbar-expand navbar-light bg-default border=0 ">
     <a class="navbar-brand text-white font-weight-bold" href="{{ route('top') }}"><i class="fas fa-campground"></i>ポートフォリオ</a>
 
     
