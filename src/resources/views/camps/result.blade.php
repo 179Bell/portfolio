@@ -1,3 +1,4 @@
+@section('title', '検索結果')
 @extends('layouts.view')
 
 @section('content')

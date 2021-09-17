@@ -1,3 +1,4 @@
+@section('title', 'プロフィール')
 @extends('layouts.view')
 
 @section('content')

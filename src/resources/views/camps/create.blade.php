@@ -1,3 +1,4 @@
+@section('title', 'キャンプ投稿')
 @extends('layouts.view')
 
 @section('content')
