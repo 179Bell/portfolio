@@ -1,3 +1,4 @@
+@section('title', 'ユーザー情報編集')
 @extends('layouts.view')
 
 @section('content')

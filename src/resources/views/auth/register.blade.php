@@ -1,3 +1,4 @@
+@section('title', 'ユーザー登録')
 @extends('layouts.view')
 
 @section('content')
