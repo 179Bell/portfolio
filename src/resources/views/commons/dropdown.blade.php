@@ -1,7 +1,7 @@
 <!-- ドロップダウン -->
 <div class="dropdown">
     <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-ellipsis-v"></i>
+        <i class="fas fa-ellipsis-v fa-lg"></i>
     </a>
 
     <div class="dropdown-menu dropdown-menu-right">

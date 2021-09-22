@@ -31,13 +31,15 @@
                     <h2>{{ $camp->title }}</h2>
                     <p style="font-size: 18px;"><i class="fas fa-map-marker-alt"></i>{{ $camp->location }}</p>
                     <p>{{ $camp->date }}</p>
-                    @include('commons.button')
                 </div>
             </div>
         </div>
     </a>
 </div>
-
+<!-- カードフッター -->
+<div class="card-footer">
+    @include('commons.button')
+</div>
 
 
 
