@@ -26,8 +26,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::post('like', 'LikesController@store')->name('like');
         Route::post('unlike', 'LikesController@destroy')->name('unlike');
         //お気に入り機能
-        Route::post('bookmark', 'BookmarksController@store')->name('bookmark');
-        Route::post('unbookmark', 'BookmarksController@destroy')->name('unbookmark');
+        Route::get('bookmark', 'BookmarksController@store')->name('bookmark');
+        Route::get('unbookmark', 'BookmarksController@destroy')->name('unbookmark');
     });
     // キャンプのCRUD処理
     Route::resource('camps', 'CampsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);

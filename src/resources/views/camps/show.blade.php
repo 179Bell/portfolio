@@ -38,7 +38,6 @@
                     <p style="font-size: 18px;"><i class="fas fa-map-marker-alt"></i>{{ $camp->location }}</p>
                     <p>{{ $camp->date }}</p>
                     <p>{{ $camp->discription }}</p>
-                    @include('commons.button')
                 </div>
             </div>
         </div>
