@@ -82,14 +82,13 @@ final class CampService
         // campimgsテーブルからパスを取得
         $camp_imgs = Camp::find($camp->id)->campImgs;
         if ($camp_imgs != null) {
-            // デフォルト画像であればDBのみ削除
-            $camp->delete();
-        } else {
             foreach ($camp_imgs as $key => $value) {
                 $url = $value->img_path;
             }
             // S3から画像を削除
             $s3_delete = Storage::disk('s3')->delete($url);
+            $camp->delete();
+        } else {
             $camp->delete();
         }        
     }
