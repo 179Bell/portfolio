@@ -15,14 +15,9 @@ final class GearService
         $gear->user_id = Auth::id();
         $gear->fill($request->all())->save();
         //画像のパスを取得、保存
-        if ($request->hasFile('gear_img')) {
-            $gear_img = $request->file('gear_img');
-            $path = Storage::disk('s3')->putFile('portfolio', $gear_img, 'public');
-            $gear->gearImgs()->create(['img_path' => $path]);
-        } else {
-            $defalut_img = 'portfolio/noimage2.jpg';
-            $gear->gearImgs()->create(['img_path' => $defalut_img]);
-        }
+        $gear_img = $request->file('gear_img');
+        $path = Storage::disk('s3')->putFile('portfolio', $gear_img, 'public');
+        $gear->gearImgs()->create(['img_path' => $path]);
     }
 
     public function destroy(Gear $gear)

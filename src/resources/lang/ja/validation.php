@@ -158,7 +158,7 @@ return [
         'discription' => 'コメント',
         'comment' => 'コメント',
         'maker' => 'メーカー',
-        'gear_imd' => '画像',
+        'gear_img' => '画像',
     ],
 
 ];

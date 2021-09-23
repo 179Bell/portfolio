@@ -26,6 +26,7 @@ class GearRequest extends FormRequest
         return [
             'name' => 'required|string|max:30',
             'comment' => 'required|string|max:100',
+            'gear_img' => 'required|image',
         ];
     }
 }

@@ -70,7 +70,7 @@
 
                     <div class="card-body">
                         @foreach ($camp->campImgs as $campImg)
-                            <img src="{{ asset('storage/images/'.$campImg->img_path) }}" width="200" height="150">
+                            <img src="{{ asset('https://shingoportfolio.s3.ap-northeast-1.amazonaws.com/'.$campImg->img_path) }}" width="200" height="150">
                         @endforeach
                     </div>
 

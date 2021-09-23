@@ -47,7 +47,7 @@
                                             type="file" 
                                             name="gear_img"
                                         >
-                                        <br><small class="text-dark">画像は任意です。JPEG,PNGのみ対応</small>
+                                        <br><small class="text-dark">JPEG,PNGのみ対応</small>
                                     </div>
                                 </div>
                                 <div class="text-danger">

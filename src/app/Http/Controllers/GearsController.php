@@ -34,21 +34,8 @@ class GearsController extends Controller
      */
     public function store(GearRequest $request, Gear $gear)
     {
-        // ギア情報を保存
-        $gear->user_id = Auth::id();
-        $gear->fill($request->all())->save();
-        //画像のパスを取得、保存
-        if ($request->hasFile('gear_img')) {
-            $gear_img = $request->file('gear_img');
-            $path = Storage::disk('s3')->putFile('portfolio', $gear_img, 'public');
-            $gear->gearImgs()->create(['img_path' => $path]);
-        } else {
-            // リクエストが画像を持たない場合
-            $defalut_img = 'portfolio/noimage2.jpg';
-            $gear->gearImgs()->create(['img_path' => $defalut_img]);
-        }
-        // $this->gearService->store($request, $gear);
-        return redirect()->route('top')->with('flash_message', 'ギアを登録しました');;
+        $this->gearService->store($request, $gear);
+        return redirect()->route('top')->with('flash_message', 'ギアを登録しました');
     }
 
     /**
