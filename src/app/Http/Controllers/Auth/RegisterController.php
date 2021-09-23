@@ -33,7 +33,7 @@ class RegisterController extends Controller
      */
     protected function redirectPath()
     {
-        return '/';
+        return '/camps';
     }
 
     /**
