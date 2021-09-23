@@ -75,9 +75,6 @@ final class CampService
             $camp_img = $request->file('camp_img');
             $url = Storage::disk('s3')->putFile('portfolio', $camp_img, 'public');
             $camp->campImgs()->create(['img_path' => $url]);
-        } else {
-            $defalut_img = 'portfolio/noimage2.jpg';
-            $camp->campImgs()->create(['img_path' => $defalut_img]);
         }
     }
 

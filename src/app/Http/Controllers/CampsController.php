@@ -61,7 +61,7 @@ class CampsController extends Controller
     public function store(CampRequest $request, Camp $camp)
     {
         $this->campService->store($request, $camp);
-        return redirect()->route('top')->with('flash_message', '投稿が完了しました');;
+        return redirect()->route('top')->with('flash_message', '投稿が完了しました');
     }
 
     /**
