@@ -52,10 +52,6 @@ final class CampService
             $url = Storage::disk('s3')->putFile('portfolio', $camp_img, 'public');
             // DBにURLを保存
             $camp->campImgs()->create(['img_path' => $url]);
-        } else {
-            //リクエストに画像がない場合はデフォルト画像を保存する。
-            $defalut_img = 'portfolio/noimage2.jpg';
-            $camp->campImgs()->create(['img_path' => $defalut_img]);
         }
     }
 
@@ -72,12 +68,12 @@ final class CampService
         $camp->fill($request->all())->save();
         //画像が更新されているか確認、更新
         if ($request->hasFile('camp_img')) {
+            //画像があった場合、リクエストから画像を取得
             $camp_img = $request->file('camp_img');
+            // S3に保存
             $url = Storage::disk('s3')->putFile('portfolio', $camp_img, 'public');
+            // DBにURLを保存
             $camp->campImgs()->create(['img_path' => $url]);
-        } else {
-            $defalut_img = 'portfolio/noimage2.jpg';
-            $camp->campImgs()->create(['img_path' => $defalut_img]);
         }
     }
 
@@ -85,15 +81,15 @@ final class CampService
     {
         // campimgsテーブルからパスを取得
         $camp_imgs = Camp::find($camp->id)->campImgs;
-        foreach ($camp_imgs as $key => $value) {
-            $url = $value->img_path;
-        }
-        // S3から画像を削除
-        if ($url != 'portfolio/noimage2.jpg') {
-            $s3_delete = Storage::disk('s3')->delete($url);
+        if ($camp_imgs != null) {
+            // デフォルト画像であればDBのみ削除
             $camp->delete();
         } else {
-        // デフォルト画像であればDBのみ削除
+            foreach ($camp_imgs as $key => $value) {
+                $url = $value->img_path;
+            }
+            // S3から画像を削除
+            $s3_delete = Storage::disk('s3')->delete($url);
             $camp->delete();
         }        
     }
