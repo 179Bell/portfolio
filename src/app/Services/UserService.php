@@ -13,7 +13,7 @@ final class UserService
         //ユーザーの検索
         $user = User::find($id);
         //ユーザーの持つギアの取得
-        $gears = $user->gears()->get();
+        $gears = $user->gears;
         //ユーザーがギアを持つかどうか確認
         if ($gears->isEmpty()) {
             return [$user, $gears];
@@ -33,7 +33,7 @@ final class UserService
     {
         $user->fill($request->all())->save();
         //ユーザーの持つギアの取得
-        $gears = $user->gears()->get();
+        $gears = $user->gears;
         //ユーザーがギアを持つかどうか確認
         if ($gears->isEmpty()) {
             return [$user, $gears];

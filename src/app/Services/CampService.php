@@ -18,8 +18,7 @@ final class CampService
      */
     public function index()
     {
-         //N+1問題対策
-        $camps = Camp::with('user', 'campImgs')->orderBy('id', 'desc')->paginate(10);
+        $camps = Camp::with('campImgs')->orderBy('id', 'desc')->paginate(5);
         return $camps;
     }
 
@@ -97,7 +96,7 @@ final class CampService
     {
         $user = User::find($id);
         // キャンプ情報を取得
-        $camps = $user->camps()->get();
+        $camps = $user->camps;
         if ($camps->isEmpty()) {
             return [$user, $camps];
         } else {
