@@ -3,7 +3,10 @@
 <br>
 
 **URL** : https://shingo-portfolio-app.herokuapp.com/
+<br>
+![画面収録 2021-10-02 14 19 31](https://user-images.githubusercontent.com/79452631/135704778-98f8ac35-d073-4cb7-b27a-0b7f48397e22.gif)
 
+<br>
 
 ## 制作背景
 <br>
@@ -22,7 +25,34 @@
 
 ## 使用画面のイメージ
 <br>
-画像貼る
+
+### 記事投稿機能
+ * ヘッダーの投稿ボタンから投稿画面へ遷移できます。
+ * 投稿のカードをクリックすることで詳細画面へ遷移できます。
+ * 詳細画面からコメントを投稿できます。
+ * 自分の投稿以外の投稿にお気に入りボタンが表示されてお気に入りに登録できます。
+
+<img src="https://user-images.githubusercontent.com/79452631/135706665-6acaa46a-fe51-4290-9db0-cc385ea5e37f.png" width="600" >
+
+<img src="https://user-images.githubusercontent.com/79452631/135706694-89f12b07-901b-479d-be19-741c5fd89380.png" height="500">
+
+<br>
+
+ * 削除機能はモーダルを用いることで安易に消せない仕様にしました。
+
+![削除](https://user-images.githubusercontent.com/79452631/135706533-439cd4ca-5823-459d-b3a0-46168c0361f4.gif)
+
+<br>
+
+### ユーザーページ
+<br>
+
+ * ギア、キャンプ、お気に入りの各タブを表示しています。
+ * 自分自身のユーザページであればギアとキャンプを削除することができます。
+
+![ユーザーページ 23](https://user-images.githubusercontent.com/79452631/135706540-efe9c04f-d197-4efa-9f2f-fefc9786c4d5.gif)
+
+
 <br>
 
 ## 使用技術
