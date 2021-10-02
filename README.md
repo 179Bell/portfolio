@@ -86,7 +86,7 @@
 <br>
 
 ### ER図
-![PFER図](https://user-images.githubusercontent.com/79452631/135698177-d5291525-663e-4e55-ac4c-2a6c61e64be8.png)
+![PFER図 (1)](https://user-images.githubusercontent.com/79452631/135704254-a826f202-e0be-46c3-a23c-aef1ac251591.png)
 
 
 <br>
