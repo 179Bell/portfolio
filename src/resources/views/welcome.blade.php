@@ -32,7 +32,7 @@
 </head>
 
 <nav class="navbar navbar-expand navbar-light bg-default" border="0">
-    <p class="navbar-brand text-white mt-2 font-weight-bold"><i class="fas fa-campground"></i>ポートフォリオ</p>
+    <p class="navbar-brand text-white mt-2 font-weight-bold"><i class="fas fa-campground"></i>キャンツー！！</p>
 </nav>
 
 <body class="bg-white d-flex flex-column" style="min-height: 100vh">
