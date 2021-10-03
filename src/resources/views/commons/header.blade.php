@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-light bg-default border=0 ">
-    <a class="navbar-brand text-white font-weight-bold" href="{{ route('top') }}"><i class="fas fa-campground"></i>ポートフォリオ</a>
+    <a class="navbar-brand text-white font-weight-bold" href="{{ route('top') }}"><i class="fas fa-campground"></i>キャンツー！！</a>
 
     
     <ul class="navbar-nav ml-auto mr-3 text-align-center">
