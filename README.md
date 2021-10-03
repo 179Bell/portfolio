@@ -4,7 +4,7 @@
 
 **URL** : https://shingo-portfolio-app.herokuapp.com/
 <br>
-![画面収録 2021-10-02 14 19 31](https://user-images.githubusercontent.com/79452631/135704778-98f8ac35-d073-4cb7-b27a-0b7f48397e22.gif)
+![画面収録 2021-10-03 14 40 06](https://user-images.githubusercontent.com/79452631/135741626-351ad468-90e5-4ef9-a1bf-8dbee653518a.gif)
 
 <br>
 
@@ -26,31 +26,46 @@
 ## 使用画面のイメージ
 <br>
 
+### 記事一覧画面
+ * アバター画像をクリックすることでドロップダウンリストが表示されます。
+ * ドロップダウンリストからはマイページ、ログアウト、登録情報の変更ができます。
+ * ゲストユーザーについては登録情報の編集はできません。
+
+<img src="https://user-images.githubusercontent.com/79452631/135706665-6acaa46a-fe51-4290-9db0-cc385ea5e37f.png" width="600" >
+
+<img src="https://user-images.githubusercontent.com/79452631/135706694-89f12b07-901b-479d-be19-741c5fd89380.png" height="500">
+<br>
+
 ### 記事投稿機能
  * ヘッダーの投稿ボタンから投稿画面へ遷移できます。
  * 投稿のカードをクリックすることで詳細画面へ遷移できます。
  * 詳細画面からコメントを投稿できます。
  * 自分の投稿以外の投稿にお気に入りボタンが表示されてお気に入りに登録できます。
+ ![画面収録 2021-10-03 14 48 44](https://user-images.githubusercontent.com/79452631/135741850-4d86f586-2813-4cae-9351-d71d25acaf74.gif)
 
-<img src="https://user-images.githubusercontent.com/79452631/135706665-6acaa46a-fe51-4290-9db0-cc385ea5e37f.png" width="600" >
 
-<img src="https://user-images.githubusercontent.com/79452631/135706694-89f12b07-901b-479d-be19-741c5fd89380.png" height="500">
 
+### 記事編集機能
+
+ * ドロップダウンリストから投稿の編集をすることが可能です。
+ ![画面収録 2021-10-03 14 48 44](https://user-images.githubusercontent.com/79452631/135741850-4d86f586-2813-4cae-9351-d71d25acaf74.gif)
 <br>
 
+### 記事削除機能
+ * ドロップダウンリストから削除することが可能です
  * 削除機能はモーダルを用いることで安易に消せない仕様にしました。
 
 ![削除](https://user-images.githubusercontent.com/79452631/135706533-439cd4ca-5823-459d-b3a0-46168c0361f4.gif)
 
 <br>
 
-### ユーザーページ
+### マイページ
 <br>
 
+ * ヘッダーのアバター画像をクリックすることでマイページに遷移できます。
  * ギア、キャンプ、お気に入りの各タブを表示しています。
  * 自分自身のユーザページであればギアとキャンプを削除することができます。
-
-![ユーザーページ 23](https://user-images.githubusercontent.com/79452631/135706540-efe9c04f-d197-4efa-9f2f-fefc9786c4d5.gif)
+![マイページ](https://user-images.githubusercontent.com/79452631/135742182-9895eff0-633b-484d-921f-7884c4ffed5f.gif)
 
 
 <br>
