@@ -15,7 +15,7 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'name' => '二輪太郎',
             'email' => 'bike@examle.com',
-            'avatar' => 'portfolio/default.jpeg',
+            'avatar' => 'portfolio/gutspose_man.png',
             'bike' => 'CB400SF',
             'password' => 'testuser',
         ]);
