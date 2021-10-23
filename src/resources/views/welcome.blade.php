@@ -23,6 +23,11 @@
     <!-- MDB core JavaScript -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <script type="text/javascript">
+        window.addEventListener('pageshow',()=>{
+        if(window.performance.navigation.type==2) location.reload();
+        });
+    </script>
 
     @hasSection('title')
         <title>@yield('title')</title>
@@ -44,6 +49,7 @@
                         <div class="card-img-overlay text-center">
                             <h1 class="text-dark font-bold pt-4 font-weight-bold">キャンツー仲間とつながる</h1>
                             <p class="text-dark font-bold">あなたのキャンプツーリングの思い出を共有してみませんか？</p>
+                            @guest
                             <div class="btn peach-gradient">
                                 <a class="text-white" href="{{ route('guest.login') }}">ゲストログイン</a>
                             </div>
@@ -53,6 +59,11 @@
                             <div class="btn btn-default">
                                 <a class="text-white" href="{{ route('register') }}">ユーザー登録</a>
                             </div>
+                            @else
+                            <div class="btn peach-gradient">
+                                <a class="text-white" href="{{ route('top') }}">投稿を見る</a>
+                            </div>
+                            @endguest
                         </div>
                     </div>
                 </div>
