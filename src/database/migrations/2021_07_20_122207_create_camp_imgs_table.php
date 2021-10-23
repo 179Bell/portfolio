@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCampsImgTable extends Migration
+class CreateCampImgsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -29,6 +29,6 @@ class CreateCampsImgTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('camp_img');
+        Schema::dropIfExists('camp_imgs');
     }
 }
