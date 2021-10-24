@@ -60,8 +60,8 @@
                                 <a class="text-white" href="{{ route('register') }}">ユーザー登録</a>
                             </div>
                             @else
-                            <div class="btn peach-gradient">
-                                <a class="text-white" href="{{ route('top') }}">投稿を見る</a>
+                            <div class="btn peach-gradient col-lg-4">
+                                <a class="text-white" style="font-size: 20px;" href="{{ route('top') }}">投稿を見る</a>
                             </div>
                             @endguest
                         </div>
@@ -96,9 +96,13 @@
                             <h1 class="font-weight-bold border-bottom">さあはじめよう！</h1>
                         </div>
                         <div class="row justify-content-center mt-3 mb-5">
-                        <a class="btn peach-gradient text-white" href="{{ route('guest.login') }}">ゲストログイン</a>
+                        @guest
+                            <a class="btn peach-gradient text-white" href="{{ route('guest.login') }}">ゲストログイン</a>
                             <a class="btn btn-default text-white" href="{{ route('login') }}">ログイン</a>
                             <a class="btn btn-default text-white" href="{{ route('register') }}">ユーザー登録はこちらから</a>
+                        @else
+                            <a class="btn peach-gradient text-white col-lg-4" style="font-size: 20px;" href="{{ route('top') }}">投稿を見る</a>
+                        @endguest
                         </div>
                     </div>
                 </div>
